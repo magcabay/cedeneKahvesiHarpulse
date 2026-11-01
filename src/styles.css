@@ -4929,3 +4929,29 @@ video {
   mask-image: linear-gradient(90deg, #000 78%, transparent 100%), linear-gradient(180deg, #000 62%, transparent 100%);
   mask-composite: intersect;
 }
+
+/* Kaydırma çubuğu: gri yerine çedene; krem fincan zemininde köpüklü kahve */
+/* Chrome'da scrollbar-color, ::-webkit-scrollbar stilini ezer; sadece Firefox'a ver */
+@supports (-moz-appearance: none) {
+  html {
+    scrollbar-color: #6b4a3a var(--bg-2);
+  }
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-2);
+}
+
+::-webkit-scrollbar-thumb {
+  border: 3px solid var(--bg-2);
+  border-radius: 999px;
+  background: linear-gradient(180deg, #e8c9a0 0%, #c89a6a 10%, #7a5236 24%, #5a3a28 100%);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #f0d6b0 0%, #d4a676 10%, #8a5e3e 24%, #6b4a3a 100%);
+}
