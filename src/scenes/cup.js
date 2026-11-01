@@ -85,15 +85,6 @@ export function initCupDesigner() {
         },
       });
     }
-    // Yanında lokum: bardağın yanına lokum tabağı gelir
-    const lokum = document.querySelector('.dc-lokum');
-    const wantLokum = state.extra.has('lokum');
-    if (lokum && lokum.classList.contains('is-on') !== wantLokum) {
-      lokum.classList.toggle('is-on', wantLokum);
-      gsap.fromTo(lokum, wantLokum ? { autoAlpha: 0, y: 24, scale: 0.8 } : { autoAlpha: 1, y: 0, scale: 1 },
-        wantLokum ? { autoAlpha: 1, y: 0, scale: 1, duration: 0.5, ease: 'back.out(1.8)' } : { autoAlpha: 0, y: 16, scale: 0.85, duration: 0.25 });
-    }
-
     const nameEl = cup.querySelector('.dc-name');
     nameEl.textContent = name;
     // Uzun isimler bandın içinde kalsın diye küçülür
