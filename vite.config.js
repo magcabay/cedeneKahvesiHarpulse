@@ -3,6 +3,8 @@ import { defineConfig } from 'vite';
 
 // Çok sayfalı build: ana hikâye + sipariş sayfası
 export default defineConfig({
+  // Vercel kökte yayınlar; GitHub Pages /cedeneKahvesiHarpulse/ altında (BASE_PATH ile verilir)
+  base: process.env.BASE_PATH || '/',
   build: {
     rollupOptions: {
       input: {

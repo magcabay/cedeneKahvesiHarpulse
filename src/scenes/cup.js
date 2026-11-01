@@ -16,9 +16,9 @@ const OPTIONS = {
   ],
   // Köpük bardağın görselini seçer: az = koyu, orta = sütlü, bol = köpüklü (fıstık seçilirse fıstıklı bardak)
   foam: [
-    { id: 'az', label: 'Az', image: '/assets/bardak-1.jpg' },
-    { id: 'orta', label: 'Orta', image: '/assets/bardak-2.jpg' },
-    { id: 'bol', label: 'Bol', image: '/assets/bardak-3.jpg' },
+    { id: 'az', label: 'Az', image: `${import.meta.env.BASE_URL}assets/bardak-1.jpg` },
+    { id: 'orta', label: 'Orta', image: `${import.meta.env.BASE_URL}assets/bardak-2.jpg` },
+    { id: 'bol', label: 'Bol', image: `${import.meta.env.BASE_URL}assets/bardak-3.jpg` },
   ],
   sweet: [
     { id: 'sade', label: 'Sade' },
@@ -75,7 +75,7 @@ export function initCupDesigner() {
 
     gsap.to(cup, { scale: size.scale, transformOrigin: '50% 90%', duration: 0.5, ease: 'back.out(1.6)' });
     const img = cup.querySelector('.dc-img');
-    const nextSrc = state.extra.has('fistik') ? '/assets/bardak-4.jpg' : foam.image;
+    const nextSrc = state.extra.has('fistik') ? `${import.meta.env.BASE_URL}assets/bardak-4.jpg` : foam.image;
     if (!img.src.endsWith(nextSrc)) {
       gsap.to(img, {
         opacity: 0, y: 8, duration: 0.18, ease: 'power1.in',

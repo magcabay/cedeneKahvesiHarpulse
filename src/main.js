@@ -47,7 +47,7 @@ document.querySelectorAll('[data-whatsapp]').forEach((el) => {
 // "Bir fincan ısmarla": iki fincana basınca açılır; dosta WhatsApp paylaşımı ya da askıda çedene
 const treatDialog = document.getElementById('treat-dialog');
 if (treatDialog) {
-  const shareText = `Sana Harput'tan bir fincan çedene ısmarladım. Bir fincanın kırk yıl hatırı vardır. ${location.origin}`;
+  const shareText = `Sana Harput'tan bir fincan çedene ısmarladım. Bir fincanın kırk yıl hatırı vardır. ${location.origin}${import.meta.env.BASE_URL}`;
   treatDialog.querySelector('[data-treat-share]').href = `https://wa.me/?text=${encodeURIComponent(shareText)}`;
   document.querySelectorAll('[data-treat-open]').forEach((btn) => btn.addEventListener('click', () => treatDialog.showModal()));
   treatDialog.querySelector('[data-treat-close]').addEventListener('click', () => treatDialog.close());

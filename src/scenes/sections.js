@@ -29,7 +29,7 @@ function renderProducts() {
   if (!grid) return;
   grid.innerHTML = PRODUCTS.map((p) => `
     <article class="product-card fade">
-      <a class="product-media" href="/siparis.html">
+      <a class="product-media" href="siparis.html">
         <img src="${p.image}" alt="${p.name}" loading="lazy"${p.focus ? ` style="${p.focus}"` : ''} />
         ${p.tag ? `<span class="product-tag">${p.tag}</span>` : ''}
       </a>
@@ -38,7 +38,7 @@ function renderProducts() {
         <p>${p.detail}</p>
         <div class="product-foot">
           <span class="product-price">${formatTL(p.price)}${p.unit ? ` <small>${p.unit}</small>` : ''}</span>
-          <a class="product-buy" href="/siparis.html">Sepete ekle</a>
+          <a class="product-buy" href="siparis.html">Sepete ekle</a>
         </div>
       </div>
     </article>`).join('');
