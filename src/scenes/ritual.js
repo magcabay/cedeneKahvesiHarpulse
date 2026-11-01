@@ -1,6 +1,8 @@
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import ritualSvg from '../svg/ritual.svg?raw';
+import { buildTree } from './tree.js';
+import { buildLandscape } from './landscape.js';
 
 // Zaman çizelgesi 0–100 birim: her konum doğrudan scroll yüzdesidir (plan §4).
 const SCENE_HEIGHT = 900; // SVG dünyasında bir sahnenin yüksekliği
@@ -16,16 +18,20 @@ export function initRitual({ reducedMotion }) {
 
   const q = (sel) => stage.querySelector(sel);
   const qa = (sel) => stage.querySelectorAll(sel);
+  buildLandscape(q('#scene-hills'));
+  buildTree(q('#tree'));
   const captions = section.querySelectorAll('.caption');
   const cards = section.querySelectorAll('.info-card');
 
   prepareStrokes([q('#tree-trunk'), ...qa('.branch'), q('#pour')]);
   gsap.set(q('#pot-move'), { x: POT_START_X, y: POT_SAND_Y });
   gsap.set(qa('.leaf'), { scale: 0, transformOrigin: '50% 50%' });
-  gsap.set(qa('.seed'), { opacity: 0 });
+  gsap.set(qa('.seed, .fruit'), { opacity: 0 });
+  gsap.set(qa('.branch'), { opacity: 0 });
   gsap.set(q('#sand-pile'), { scaleY: 0, transformOrigin: '50% 100%' });
   gsap.set(q('#pestle'), { rotation: -25, svgOrigin: '800 1230' });
   gsap.set([...captions, ...cards], { autoAlpha: 0, y: 24 });
+  gsap.set(captions[0], { autoAlpha: 1, y: 0 });
 
   const tl = gsap.timeline({ defaults: { ease: 'none' } });
 
@@ -36,14 +42,16 @@ export function initRitual({ reducedMotion }) {
     .to('#mountain-far', { y: 30, duration: 22 }, 0)
     .to('#mountain-mid', { y: 60, duration: 22 }, 0)
     .to('#mountain-near', { y: 100, duration: 22 }, 0)
-    .to('#tree', { y: 100, duration: 22 }, 0);
-  showCaption(tl, captions[0], 1, 19);
+    .to('#tree', { y: 100, duration: 22 }, 0)
+    .to('.scroll-hint', { autoAlpha: 0, duration: 3 }, 0)
+    .to(captions[0], { autoAlpha: 0, y: -24, duration: 2, ease: 'power2.in' }, 17);
 
   // 10–22 · Ağaç büyüyor: gövde, dallar, yapraklar
-  tl.to('#tree-trunk', { strokeDashoffset: 0, duration: 4, ease: 'power2.out' }, 10)
-    .to('.branch', { strokeDashoffset: 0, duration: 3, stagger: 0.6, ease: 'power2.out' }, 13.5)
-    .to('.leaf', { scale: 1, duration: 2, stagger: 0.3, ease: 'power2.out' }, 17)
-    .to('.seed', { opacity: 1, duration: 1.5, stagger: 0.1 }, 19.5);
+  // Dallar gövdeden uca sıralı üretildiği için stagger kökten tepeye doğru büyür.
+  tl.to('#tree-trunk', { strokeDashoffset: 0, duration: 3, ease: 'power2.out' }, 10)
+    .to('.branch', { strokeDashoffset: 0, opacity: 1, duration: 1.4, stagger: { amount: 4.5 }, ease: 'power1.out' }, 12)
+    .to('.leaf', { scale: 1, duration: 1, stagger: { amount: 3.5, from: 'random' }, ease: 'back.out(2)' }, 15.5)
+    .to('.seed, .fruit', { opacity: 1, duration: 1.5, stagger: { amount: 1 } }, 19);
 
   // 22–30 · Taneler düşer, kamera dibeğe iner
   tl.to('#world', { y: -SCENE_HEIGHT, duration: 8, ease: 'power1.inOut' }, 22);
@@ -105,7 +113,7 @@ export function initRitual({ reducedMotion }) {
 
   // 95–100 · Cezve çekilir, sahne kararır, fincan siyahta tek kalır
   tl.to('#pot-move', { x: POT_SAND_X + 900, y: POT_SAND_Y - 500, duration: 4, ease: 'power1.in' }, 95)
-    .to(['#scene-hills', '#scene-mortar', '#scene-sand'], { opacity: 0.15, duration: 5 }, 95)
+    .to(['#scene-hills', '#scene-mortar', '#scene-sand', '#scene-sand-front'], { opacity: 0.15, duration: 5 }, 95)
     .to(cards, { autoAlpha: 0, duration: 3 }, 97);
 
   // Geliştirmede konsoldan yüzdeye atlamak için: __ritual.progress(0.5)
@@ -130,10 +138,20 @@ export function initRitual({ reducedMotion }) {
 
 // Scroll'dan bağımsız sürekli döngüler
 function startAmbientLoops(q, qa) {
-  gsap.fromTo(q('#tree'), { rotation: -1.2 }, {
-    rotation: 1.2, svgOrigin: '520 728', duration: 2, ease: 'sine.inOut', yoyo: true, repeat: -1,
+  gsap.fromTo(q('#tree'), { rotation: -0.8 }, {
+    rotation: 0.8, svgOrigin: '520 728', duration: 2, ease: 'sine.inOut', yoyo: true, repeat: -1,
   });
+  // Rüzgârda titreyen yapraklar: her yaprak değil, rastgele bir alt küme (performans)
+  [...qa('.leaf')].filter((_, i) => i % 4 === 0).forEach((leaf) => {
+    gsap.to(leaf, {
+      rotation: `+=${gsap.utils.random(8, 18)}`, duration: gsap.utils.random(0.6, 1.4),
+      ease: 'sine.inOut', yoyo: true, repeat: -1, delay: gsap.utils.random(0, 2),
+    });
+  });
+  // Rüzgâr sesine eşlik eden genel dalgalanma: tepe kümeleri hafifçe yana kayar
+  gsap.to(q('#tree-leaves'), { x: 2.5, duration: 3.1, ease: 'sine.inOut', yoyo: true, repeat: -1 });
   gsap.to(q('#ember'), { opacity: 0.55, duration: 1.6, ease: 'sine.inOut', yoyo: true, repeat: -1 });
+  gsap.to(q('#sand-heat'), { opacity: 0.6, duration: 2.2, ease: 'sine.inOut', yoyo: true, repeat: -1 });
   gsap.to(q('#heat-wave'), { x: 8, scaleY: 1.1, duration: 1.2, ease: 'sine.inOut', yoyo: true, repeat: -1 });
   qa('.bubble').forEach((b, i) => {
     gsap.to(b, { y: -18, opacity: 0, duration: 1.6 + i * 0.3, ease: 'none', repeat: -1, delay: i * 0.4 });

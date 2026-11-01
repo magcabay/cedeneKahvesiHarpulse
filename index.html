@@ -7,88 +7,493 @@
     <meta name="description" content="Harput yamaçlarından taş fincana: Elazığ Çedenesi'nin hikâyesi." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   </head>
   <body>
     <header class="site-header">
-      <span class="brand" data-brand>ÇEDENE</span>
+      <a class="brand brand-lockup" href="#top"><span data-brand>HARPULSE</span><small>Harput Çedenesi</small></a>
+      <nav class="site-nav" aria-label="Ana menü">
+        <a href="#manifesto">Manifesto</a>
+        <a href="#neden">Neden Çedene</a>
+        <a href="#urunler">Mağaza</a>
+        <a href="#menu">Çedene Barı</a>
+        <a href="#saglik">Sağlık</a>
+        <a href="#konum">Konum</a>
+      </nav>
+      <a class="header-order" href="/siparis.html">Sipariş Ver</a>
     </header>
 
+    <button class="treat-float" type="button" data-treat-open aria-label="Bir fincan ısmarla">
+      <svg class="two-cups" viewBox="0 0 120 80" aria-hidden="true">
+        <g fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+          <g transform="rotate(-12 38 50)"><path d="M14 30h40l-5 32H19z"/><path d="M54 36c9 0 9 14 0 14"/></g>
+          <g transform="rotate(12 82 50)"><path d="M66 30h40l-5 32H71z"/><path d="M66 36c-9 0-9 14 0 14"/></g>
+        </g>
+      </svg>
+      <span>Ismarla</span>
+    </button>
+
+    <!-- Maskot: el sallayan taş fincan, "Tadına bak!" der; tıklanınca tadım kartına götürür -->
+    <button class="mascot" type="button" data-mascot aria-label="Tadına bak">
+      <span class="mascot-bubble">Tadına bak!</span>
+      <svg class="mascot-svg" viewBox="0 0 170 190" aria-hidden="true">
+        <g class="mascot-steam" fill="none" stroke="#c9b8a6" stroke-width="4" stroke-linecap="round">
+          <path d="M70 48c-6-8 6-14 0-24"/><path d="M88 44c-6-8 6-14 0-24"/><path d="M106 48c-6-8 6-14 0-24"/>
+        </g>
+        <ellipse cx="88" cy="176" rx="62" ry="9" fill="#4a3326" opacity="0.25"/>
+        <ellipse cx="88" cy="168" rx="66" ry="11" fill="#6b4a3a"/>
+        <path d="M134 92c24 0 24 38 0 38" fill="none" stroke="#4e3a2c" stroke-width="10" stroke-linecap="round"/>
+        <path d="M36 70h104l-10 82q-2 14-16 14H62q-14 0-16-14z" fill="#5a4636"/>
+        <path d="M44 134h88l-2 14q-2 10-12 10H58q-10 0-12-10z" fill="#4a3829"/>
+        <g fill="#7a6250">
+          <rect x="52" y="122" width="10" height="14"/><rect x="70" y="118" width="10" height="18"/><rect x="88" y="122" width="10" height="14"/><rect x="106" y="118" width="10" height="18"/><rect x="120" y="124" width="8" height="12"/>
+        </g>
+        <ellipse cx="88" cy="70" rx="52" ry="11" fill="#d9b07a"/>
+        <ellipse cx="88" cy="68" rx="44" ry="7" fill="#ecd0a2"/>
+        <g class="mascot-eyes">
+          <ellipse cx="72" cy="94" rx="7" ry="9" fill="#fbf4ea"/><ellipse cx="104" cy="94" rx="7" ry="9" fill="#fbf4ea"/>
+          <circle cx="74" cy="96" r="4" fill="#24170f"/><circle cx="106" cy="96" r="4" fill="#24170f"/>
+          <circle cx="75.5" cy="94.5" r="1.4" fill="#fff"/><circle cx="107.5" cy="94.5" r="1.4" fill="#fff"/>
+        </g>
+        <ellipse cx="62" cy="108" rx="6" ry="3.5" fill="#d88a6a" opacity="0.7"/><ellipse cx="114" cy="108" rx="6" ry="3.5" fill="#d88a6a" opacity="0.7"/>
+        <path d="M78 108q10 10 20 0" fill="none" stroke="#24170f" stroke-width="3.5" stroke-linecap="round"/>
+        <g class="mascot-arm">
+          <path d="M40 104 Q22 96 16 74" fill="none" stroke="#5a4636" stroke-width="10" stroke-linecap="round"/>
+          <circle cx="15" cy="68" r="9" fill="#5a4636"/>
+        </g>
+      </svg>
+    </button>
+
+    <a class="whatsapp-float" href="#" target="_blank" rel="noopener" aria-label="WhatsApp ile yazın" data-whatsapp="Merhaba HARPULSE ☕ Harput çedenesi ve ürünleriniz hakkında bilgi almak istiyorum.">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.7 11.7 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.5-.3Z"/></svg>
+      <span>WhatsApp</span>
+    </a>
+
     <main>
-      <!-- Sahne 0–3: pinned ritüel (A — ritual.js) -->
-      <section id="ritual" class="ritual">
-        <div class="ritual-stage" id="ritual-stage"></div>
-
-        <div class="caption" data-caption="0">
-          <h2>Yamaç</h2>
-          <p>Bu tohumu insan ekmedi. Tarlası yok, gübresi yok, sulayanı yok. Fırat'ın sarp kayalıklarında, rüzgârın ve güneşin sabrıyla büyüyen yabani menengiç: Elazığ Çedenesi.</p>
+      <!-- Açılış: krem zemin, sağda antrasit dalga içinde ürün -->
+      <section class="hero" id="top">
+        <div class="hero-watermark" aria-hidden="true"><img src="/assets/00-harput.jpg" alt="" /></div>
+        <div class="hero-seal" aria-hidden="true">
+          <svg viewBox="0 0 200 200">
+            <defs><path id="seal-circle" d="M100 100 m-78 0 a78 78 0 1 1 156 0 a78 78 0 1 1 -156 0"/></defs>
+            <circle cx="100" cy="100" r="96" class="seal-ring"/>
+            <circle cx="100" cy="100" r="58" class="seal-core"/>
+            <text class="seal-text"><textPath href="#seal-circle" startOffset="0">BİR FİNCANIN KIRK YIL HATIRI · ELAZIĞ'DAN DÜNYAYA · </textPath></text>
+            <g class="seal-cups" transform="translate(64 76) scale(0.6)" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+              <g transform="rotate(-12 38 50)"><path d="M14 30h40l-5 32H19z"/><path d="M54 36c9 0 9 14 0 14"/><path d="M26 22c0-5 6-5 6-10M38 22c0-5 6-5 6-10"/></g>
+              <g transform="rotate(12 82 50)"><path d="M66 30h40l-5 32H71z"/><path d="M66 36c-9 0-9 14 0 14"/><path d="M78 22c0-5 6-5 6-10M90 22c0-5 6-5 6-10"/></g>
+            </g>
+          </svg>
         </div>
-        <div class="caption" data-caption="1">
-          <h2>Ağaç ve Hasat</h2>
-          <p>Ekim ayında, eller üşürken toplanır. Yeşil-mavi taneler asırlık taş dibekte dövülür. Katkı yok, koruyucu yok. Dövüldükçe kendi yeşil yağını salar, kadife bir macuna döner.</p>
+        <div class="hero-copy">
+          <p class="eyebrow">Elazığ · Harput</p>
+          <h1 class="hero-title"><span class="w">Dağın</span> <span class="w">kahvesi:</span> <span class="w accent">Çedene</span></h1>
+          <p class="hero-lead">Yalnızca Harput'un yamaçlarında yetişen yabani menengiçten, taş dibekte dövülüp sütle pişen bir fincan. Kahve çekirdeği yok, katkı yok; kırk yıl hatırı var. Elazığ'dan tüm dünyaya.</p>
+          <div class="hero-actions">
+            <a class="button" href="/siparis.html">Sipariş Ver</a>
+            <a class="button button-ghost" href="#hikaye">Hikâyemiz</a>
+          </div>
         </div>
-        <div class="caption" data-caption="2">
-          <h2>Kum ve Köz</h2>
-          <p>Suya değil, yayla sütüne emanet edilir. Bakır cezve kızgın kumda ağır ağır ilerler. Acele etmez; köz sabırlıdır.</p>
+        <div class="hero-wave">
+          <svg class="hero-wave-shape" viewBox="0 0 800 900" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M800 0 L800 900 L120 900 C260 760 300 620 420 470 C540 320 700 260 760 120 C780 70 795 30 800 0 Z"/>
+          </svg>
+          <!-- Döküm videosu gelince buraya video gelecek (scroll ile akacak) -->
+          <img class="hero-visual" src="/assets/04-poster.jpg" alt="Bakır cezveden Harput Kalesi motifli taş fincana dökülen çedene" />
+          <div class="hero-cards">
+            <a class="hero-card" href="/siparis.html">
+              <img src="/assets/02-poster.jpg" alt="Taş dibekte dövülen menengiç" />
+              <h3>Taş Dibek Çedene</h3>
+              <p>350 g, katkısız. Sıcak ya da soğuk.</p>
+            </a>
+            <a class="hero-card" href="/siparis.html">
+              <img src="/assets/baslangic-seti.jpg" alt="Kale kabartmalı fincan ve çedene paketi hediye kutusunda" />
+              <h3>Başlangıç Seti</h3>
+              <p>Çedene ve Harput fincanı bir arada.</p>
+            </a>
+          </div>
         </div>
-        <div class="caption" data-caption="3">
-          <h2>Döküm ve Fincan</h2>
-          <p>Harput Kalesi motifli taş fincana döküldükçe asırlık bir Kürsübaşı ritüeli başlar.</p>
-        </div>
-
-        <ul class="info-cards">
-          <li class="info-card">Kafein içermez</li>
-          <li class="info-card">Doğal menengiç reçinesi</li>
-          <li class="info-card">Yabani antioksidan kaynağı</li>
-        </ul>
       </section>
 
-      <!-- Sahne 4–6: normal akış (C — sections.js) -->
-      <section id="tescil" class="section">
-        <h2 class="split">Tescil ve Çatışma</h2>
-        <p class="fade">Elazığ Çedene Kahvesi coğrafi işaretle tescilli. Peki neden hâlâ Harput sokaklarına sıkışmış? Dünya kafein çarpıntısına ve sentetik şuruba mahkûm değil.</p>
-        <p class="footnote fade">Kaynak: Türk Patent ve Marka Kurumu coğrafi işaret kaydı (doğrulanacak).</p>
-      </section>
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee-track">
+          <span>Bir fincanın <em>kırk yıl</em> hatırı</span><i></i>
+          <span><em>Elazığ'ın</em> yabani kahvesi</span><i></i>
+          <span>Harput'tan <em>sofranıza</em></span><i></i>
+          <span>Taş dibekte <em>dövüldü</em></span><i></i>
+          <span><em>#KırkYılHatır</em></span><i></i>
+          <span>Bir fincanın <em>kırk yıl</em> hatırı</span><i></i>
+          <span><em>Elazığ'ın</em> yabani kahvesi</span><i></i>
+          <span>Harput'tan <em>sofranıza</em></span><i></i>
+          <span>Taş dibekte <em>dövüldü</em></span><i></i>
+        </div>
+      </div>
 
-      <section id="bar" class="section">
-        <h2 class="split">Yeni Nesil Çedene Barı</h2>
-        <div class="menu">
-          <article class="menu-item fade">
-            <h3>Çedene Kortado</h3>
-            <p>Yulaf veya keçi sütü, çift ölçek çedene.</p>
+      <!-- Hikâye: aşağı kaydırınca kartlar yana akar (home.js) -->
+      <section id="hikaye" class="journey">
+        <div class="journey-head">
+          <p class="eyebrow">Hikâyemiz</p>
+          <h2>Dağdan fincana <em>dört adım</em></h2>
+        </div>
+        <div class="journey-track">
+          <article class="journey-card">
+            <img src="/assets/menengic-agaci.jpg" alt="Gün batımında yamaçta yabani menengiç ağacı" loading="lazy" />
+            <div class="journey-body"><span>01</span><h3>Rüzgâr ekti</h3><p>Tarlası yok, sulayanı yok. Menengiç, Harput'un yamaçlarında kendiliğinden büyür.</p></div>
           </article>
-          <article class="menu-item fade">
-            <h3>Soğuk Harput</h3>
-            <p>Soğuk demleme, badem sütü.</p>
+          <article class="journey-card">
+            <img src="/assets/el-toplama.jpg" alt="Dalından elle toplanan menengiç taneleri" loading="lazy" />
+            <div class="journey-body"><span>02</span><h3>El topladı</h3><p>Ekim ayında, eller üşürken dağdan tek tek toplanır.</p></div>
           </article>
-          <article class="menu-item fade">
-            <h3>Kürsübaşı Seremonisi</h3>
-            <p>Bakır cezve, taş fincan.</p>
+          <article class="journey-card">
+            <img src="/assets/02-poster.jpg" alt="Taş dibekte dövülen taneler" loading="lazy" />
+            <div class="journey-body"><span>03</span><h3>Taş dövdü</h3><p>Kavrulur, taş dibekte dövülür ve kendi yağıyla kadife bir macuna dönüşür.</p></div>
+          </article>
+          <article class="journey-card">
+            <img src="/assets/04-poster.jpg" alt="Taş fincana dökülen çedene" loading="lazy" />
+            <div class="journey-body"><span>04</span><h3>Fincan buluşturdu</h3><p>Sütle bakır cezvede pişer, taş fincana dökülür; masa dolar, sohbet başlar.</p></div>
           </article>
         </div>
+        <div class="journey-progress"><i></i></div>
+      </section>
+
+      <section class="stats-band" aria-label="Rakamlarla çedene">
+        <div class="stat-item"><strong data-count="1">1</strong><span>bileşen</span></div>
+        <div class="stat-item"><strong data-count="0">0</strong><span>kahve çekirdeği</span></div>
+        <div class="stat-item"><strong data-count="2022">2022</strong><span>coğrafi işaret</span></div>
+        <div class="stat-item"><strong data-count="40">40</strong><span>yıl hatır</span></div>
+      </section>
+
+      <section id="hatir" class="section hatir">
+        <div class="hatir-watermark" aria-hidden="true"><img src="/assets/00-harput.jpg" alt="" loading="lazy" /></div>
+        <img class="news-clip" src="/assets/tescil-gazete.jpg" alt="Elazığ Çedene Kahvesi'nin tescil haberi, gazete kupürü" loading="lazy" onerror="this.remove()" />
+        <div class="hatir-badge news-badge fade">
+          <span class="news-masthead">Coğrafi İşaret · 22 Şubat 2022</span>
+          <strong class="news-headline">Elazığ Çedene Kahvesi tescillendi</strong>
+          <span class="news-body">Türk Patent ve Marka Kurumu, Harput'un yabani menengiçinden yapılan kahveyi mahreç işaretiyle koruma altına aldı.</span>
+          <span class="news-foot">Tescil No 1034</span>
+        </div>
+        <div class="hatir-text">
+          <p class="eyebrow fade">Elazığ'dan bir söz</p>
+          <h2 class="split">Bir Fincan Çedenenin Kırk Yıl Hatırı Vardır</h2>
+          <p class="lead fade">Harput'un kalesi, Hazar'ın maviliği, Fırat'ın sabrı ve Elazığ'ın kapısı her misafire açık sofraları. Bu topraklarda bir fincan ikram etmek, kırk yıllık bir dostluğa söz vermektir. Çedene o sözün fincanıdır.</p>
+        </div>
+        <button class="treat-button fade" type="button" data-treat-open>
+          <svg class="two-cups" viewBox="0 0 120 80" aria-hidden="true">
+            <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <g transform="rotate(-12 38 50)"><path d="M14 30h40l-5 32H19z"/><path d="M54 36c9 0 9 14 0 14"/><path d="M26 22c0-5 6-5 6-10M38 22c0-5 6-5 6-10"/></g>
+              <g transform="rotate(12 82 50)"><path d="M66 30h40l-5 32H71z"/><path d="M66 36c-9 0-9 14 0 14"/><path d="M78 22c0-5 6-5 6-10M90 22c0-5 6-5 6-10"/></g>
+            </g>
+          </svg>
+          <span>Bir fincan ısmarla</span>
+        </button>
+      </section>
+
+      <section id="manifesto" class="section manifesto">
+        <div class="manifesto-head">
+          <div>
+            <p class="eyebrow fade">Çedene manifestosu</p>
+            <h2 class="split">Her Fincan, Dağdaki Bir Emeğe Dokunur</h2>
+            <p class="lead fade narrow">Menengiç tarlada yetişmez; onu Harput'un yamaçlarından elleriyle toplayan Elazığlılar vardır. Çedene'yi seçtiğinizde bir içecekten fazlasını seçersiniz: Elazığ'ın emeğini, geleneğini ve adını dünyaya taşırsınız.</p>
+            <svg class="spill" viewBox="0 0 600 360" aria-hidden="true">
+              <defs>
+                <radialGradient id="spill-fill" cx="45%" cy="45%" r="60%">
+                  <stop offset="0%" stop-color="#c9a27a" stop-opacity="0.55"/>
+                  <stop offset="70%" stop-color="#a87850" stop-opacity="0.45"/>
+                  <stop offset="100%" stop-color="#7a5236" stop-opacity="0.55"/>
+                </radialGradient>
+              </defs>
+              <!-- Dökülen çedene: organik leke -->
+              <path d="M120 170c-10-52 40-96 104-92 40 3 58-30 104-26 62 6 112 46 104 98-5 34 30 48 22 82-10 44-70 58-118 50-36-6-52 22-96 18-62-6-108-40-104-86 2-18-12-28-16-44z" fill="url(#spill-fill)" stroke="#7a5236" stroke-opacity="0.35" stroke-width="2.5"/>
+              <path d="M190 160c4-26 34-44 70-40 24 3 40-12 64-8 30 5 50 26 44 50-4 18 10 30 2 46-10 20-44 24-70 18-20-5-34 10-56 6-32-6-58-28-54-72z" fill="#e8c9a0" fill-opacity="0.35"/>
+              <!-- Fincan halkası izi -->
+              <path d="M440 80a64 64 0 1 1-6 118" fill="none" stroke="#7a5236" stroke-opacity="0.3" stroke-width="6" stroke-linecap="round"/>
+              <path d="M392 196a64 64 0 0 1 22-112" fill="none" stroke="#7a5236" stroke-opacity="0.18" stroke-width="4" stroke-linecap="round"/>
+              <!-- Damlalar -->
+              <g fill="#8a5a34" fill-opacity="0.45">
+                <circle cx="96" cy="250" r="9"/><circle cx="72" cy="272" r="5"/><circle cx="470" cy="282" r="7"/><circle cx="498" cy="300" r="4"/><circle cx="150" cy="96" r="5"/>
+              </g>
+              <!-- Menengiç taneleri -->
+              <g class="spill-berries">
+                <circle cx="540" cy="250" r="11" fill="#4f8a86"/><circle cx="536" cy="246" r="3" fill="#fff" fill-opacity="0.5"/>
+                <circle cx="560" cy="270" r="10" fill="#8a4a3a"/><circle cx="556" cy="266" r="3" fill="#fff" fill-opacity="0.45"/>
+                <circle cx="522" cy="276" r="9" fill="#6f8f5a"/><circle cx="519" cy="273" r="2.5" fill="#fff" fill-opacity="0.45"/>
+                <circle cx="60" cy="140" r="9" fill="#5e9a92"/><circle cx="57" cy="137" r="2.5" fill="#fff" fill-opacity="0.5"/>
+                <circle cx="80" cy="120" r="8" fill="#a35a44"/><circle cx="77" cy="117" r="2.5" fill="#fff" fill-opacity="0.45"/>
+              </g>
+            </svg>
+          </div>
+          <aside class="taste fade" aria-label="Tat profili">
+            <video class="taste-photo" src="/assets/tadim.mp4" poster="/assets/kilim-fincan.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Fincana dökülen köpüklü kahve"></video>
+            <div class="taste-body">
+              <p class="eyebrow">Tadına bak</p>
+              <h3>İlk yudumda fındık, ardından reçinenin ılık dokunuşu.</h3>
+              <p class="taste-lead">Köpüğü kadife gibi, sonu hafif tatlı. Kahve gibi içilir ama kahveye benzemez.</p>
+              <ul class="taste-notes">
+                <li><span>Fındıksı</span><i style="--v: 0.9"></i></li>
+                <li><span>Kremamsı</span><i style="--v: 0.8"></i></li>
+                <li><span>Reçineli</span><i style="--v: 0.55"></i></li>
+                <li><span>Doğal tatlılık</span><i style="--v: 0.35"></i></li>
+                <li><span>Acılık</span><i style="--v: 0.1"></i></li>
+              </ul>
+              <a class="button" href="#" target="_blank" rel="noopener" data-whatsapp="Merhaba HARPULSE ☕ Çedenenin tadına bakmak istiyorum. Ücretsiz tadım paketi alabilir miyim?">Ücretsiz tadım iste</a>
+            </div>
+          </aside>
+        </div>
+        <div class="pledges">
+          <article class="pledge fade">
+            <span class="pledge-num">01</span>
+            <h3>Adil hasat</h3>
+            <p>Menengiçi aracısız, doğrudan yöre halkından ve adil fiyatla alırız.</p>
+          </article>
+          <article class="pledge fade">
+            <span class="pledge-num">02</span>
+            <h3>Yaşayan gelenek</h3>
+            <p>Harput'un Kürsübaşı sohbetlerini yeni nesil bir deneyimle şehirlere taşırız.</p>
+          </article>
+          <article class="pledge fade">
+            <span class="pledge-num">03</span>
+            <h3>Tescilli köken</h3>
+            <p>2022'de coğrafi işaret alan <a href="https://ci.turkpatent.gov.tr/Files/GeographicalSigns/1c5d177e-285f-4e42-bae0-5509130a0764.pdf" target="_blank" rel="noopener">Elazığ Çedenesi'ni</a> Elazığ'ın adıyla büyütürüz.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="neden" class="section section-alt">
+        <p class="eyebrow fade">Neden çedene?</p>
+        <h2 class="split">Tadınca Anlayacaksınız</h2>
+        <div class="cards">
+          <article class="card fade">
+            <h3>Dünyada eşi yok</h3>
+            <p>Yalnızca bu dağlarda yetişen, coğrafi işaretle korunan yabani bir meyve. Başka hiçbir yerde aynısı yok.</p>
+          </article>
+          <article class="card fade">
+            <h3>Kahve çekirdeği yok</h3>
+            <p>Kahvenin ritüeli, kahvesiz bir fincan. İçindekiler tek satır: menengiç. Şeker, aroma, koruyucu yok.</p>
+          </article>
+          <article class="card fade">
+            <h3>Tadı unutulmaz</h3>
+            <p>Fındıksı, hafif reçineli, kadife kıvamında. Sütle geleneksel, yulaf ve badem sütüyle yepyeni.</p>
+          </article>
+        </div>
+        <p class="footnote fade">Menengiç üzerine yapılan <a href="https://avesis.erciyes.edu.tr/yayin/fb51ec88-9bf5-4cc2-9c49-219ac3180f76/pistacia-terebinthus-menengic-meyve-ekstrelerinin-ve-menengic-kahvesinin-total-fenolik-ve-flavonoit-madde-kompozisyonlarinin-ve-antioksidan-etkilerininkarsilastirilmasi" target="_blank" rel="noopener">laboratuvar çalışmalarında</a> fenolik bileşikler saptanmıştır. Bilgiler tıbbi iddia taşımaz. Antep fıstığıyla aynı cinsten olduğu için fıstık alerjisi olanların dikkatli olması önerilir.</p>
+      </section>
+
+      <section id="saglik" class="section health">
+        <p class="eyebrow fade">Sağlığa dost</p>
+        <h2 class="split">Doğanın Kendisi, Fincanda</h2>
+        <div class="health-grid">
+          <article class="health-card fade">
+            <span class="health-icon">☕</span>
+            <h3>Kahve çekirdeği içermez</h3>
+            <p>Menengiç meyvesinden yapılır, kahve bitkisi kullanılmaz. Kafeine ara vermek isteyenler için ritüelden vazgeçmeden bir alternatif.</p>
+          </article>
+          <article class="health-card fade">
+            <span class="health-icon">🌿</span>
+            <h3>Doğal antioksidan kaynağı</h3>
+            <p>Menengiç meyvesi ve menengiç kahvesi üzerine yapılan laboratuvar çalışmalarında fenolik bileşikler ve antioksidan aktivite saptanmıştır.</p>
+          </article>
+          <article class="health-card fade">
+            <span class="health-icon">💧</span>
+            <h3>Kendi yağıyla kadife kıvam</h3>
+            <p>Taş dibekte dövülürken kendi doğal yağını salar. Menengiç yağının doymamış yağ asitleri içerdiği araştırmalarda bildirilmiştir.</p>
+          </article>
+          <article class="health-card fade">
+            <span class="health-icon">🥛</span>
+            <h3>Sütün besleyiciliği</h3>
+            <p>Geleneksel olarak sütle pişirilir; kalsiyum ve protein fincana sütle gelir. Bitkisel sütlerle de hazırlanabilir.</p>
+          </article>
+        </div>
+        <p class="footnote fade">Kaynak: <a href="https://avesis.erciyes.edu.tr/yayin/fb51ec88-9bf5-4cc2-9c49-219ac3180f76/pistacia-terebinthus-menengic-meyve-ekstrelerinin-ve-menengic-kahvesinin-total-fenolik-ve-flavonoit-madde-kompozisyonlarinin-ve-antioksidan-etkilerininkarsilastirilmasi" target="_blank" rel="noopener">Erciyes Üniversitesi, menengiç ve menengiç kahvesinde fenolik bileşikler</a>. Bilgiler tanıtım amaçlıdır ve tıbbi iddia taşımaz. Antep fıstığıyla aynı cinsten olduğu için fıstık alerjisi olanların dikkatli olması önerilir.</p>
+      </section>
+
+      <section id="urunler" class="section">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow fade">Mağaza</p>
+            <h2 class="split">Ritüeli Eve Getirin</h2>
+          </div>
+          <a class="button button-ghost fade" href="/siparis.html">Tüm ürünler</a>
+        </div>
+        <div class="products-grid" id="products-grid"></div>
+      </section>
+
+      <!-- Kampanya bandı: Starbucks tarzı öne çıkan ürün -->
+      <section id="kampanya" class="promo">
+        <div class="promo-media">
+          <img src="/assets/kilim-bardak.jpg" alt="Kilim desenli Çedene karton bardağı" loading="lazy" />
+        </div>
+        <div class="promo-text">
+          <p class="eyebrow fade">Yeni · Al-götür</p>
+          <h2 class="split">Yolda da Kürsübaşı</h2>
+          <p class="fade">Çedene artık kilim desenli bardağında, yanınızda. Soğuk Harput ya da sıcak Çedene Latte; sabah işe giderken, akşam yürürken Harput'un sıcaklığı elinizde.</p>
+          <div class="hero-actions fade">
+            <a class="button button-dark" href="#menu">Menüyü Gör</a>
+            <a class="button button-ghost-dark" href="#" target="_blank" rel="noopener" data-whatsapp="Merhaba, al-götür çedene siparişi vermek istiyorum.">Hemen Sipariş Ver</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="menu" class="section section-alt">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow fade">Çedene Barı</p>
+            <h2 class="split">Kürsübaşı Şehre İniyor</h2>
+          </div>
+          <p class="section-note fade">Her fincan, taş dibekte dövülmüş çedeneyle siparişle hazırlanır.</p>
+        </div>
+        <div class="kursu fade">
+          <img src="/assets/00-harput.jpg" alt="Harput" loading="lazy" data-kursu-img />
+          <div>
+            <p class="eyebrow">Kürsübaşı nedir?</p>
+            <p>Harput'ta kış gecelerinde, altında közün ısıttığı yorganlı alçak masanın, yani <strong>kürsünün</strong> etrafında toplanıp türküler, hikâyeler ve sohbetle sabahı etme geleneği. Çedene Barı bu sıcaklığı şehre taşıyor.</p>
+          </div>
+        </div>
+        <div class="bar-layout">
+          <ul class="bar-menu" id="bar-menu"></ul>
+          <div class="stores">
+            <article class="store fade">
+              <span class="store-status">İlk durak</span>
+              <h3>Harput</h3>
+              <p>Kalenin eteğinde amiral mağaza: kumda cezve ve Kürsübaşı geceleri.</p>
+            </article>
+            <article class="store fade">
+              <span class="store-status">Sıradaki</span>
+              <h3>Senin şehrin</h3>
+              <p>İstanbul, Ankara, İzmir ve gurbetteki her Elazığlının şehri.</p>
+              <a class="button" href="#" target="_blank" rel="noopener" data-whatsapp="Merhaba, şehrime bir Çedene Barı açmakla ilgileniyorum. Ön talep bırakmak istiyorum.">Şehrine getir</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="konum" class="section location">
+        <div class="location-info">
+          <p class="eyebrow fade">Bizi bulun</p>
+          <h2 class="split">Harput'ta bir fincan</h2>
+          <dl class="location-list fade">
+            <div><dt>Mağaza</dt><dd data-store="name">Harput Amiral Mağaza</dd></div>
+            <div><dt>Adres</dt><dd data-store="address">Harput Mahallesi, Merkez / Elazığ</dd></div>
+            <div><dt>Saatler</dt><dd data-store="hours">Her gün 09:00 – 23:00</dd></div>
+            <div><dt>Instagram</dt><dd data-brand-handle>@harpulse</dd></div>
+          </dl>
+          <div class="hero-actions fade">
+            <a class="button" href="#" target="_blank" rel="noopener" data-whatsapp="Merhaba, Harput'taki mağazanız hakkında bilgi almak istiyorum.">WhatsApp'tan Yaz</a>
+            <a class="button button-ghost" href="https://www.google.com/maps/search/?api=1&amp;query=Harput%20Kalesi%2C%20Elaz%C4%B1%C4%9F" target="_blank" rel="noopener">Yol Tarifi</a>
+          </div>
+          <p class="footnote fade">Amiral mağaza planlanan konumdur; açılış duyurusu Instagram hesabımızdan yapılacak.</p>
+        </div>
+        <div class="location-map fade">
+          <iframe data-store-map title="Harput haritası" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </section>
+
+      <section id="dunya" class="section world">
+        <p class="eyebrow fade">Vizyonumuz</p>
+        <h2 class="split">Elazığ'dan Tüm Dünyaya</h2>
+        <p class="lead fade narrow">Harput'un yamaçlarında kuşaklardır içilen bu fincanı, coğrafi işaretinin gücüyle dünyanın kahve haritasına taşıyoruz. Her yeni şehirde Elazığ'ın adı da fincanla birlikte yolculuk edecek.</p>
+        <ol class="route">
+          <li class="route-step fade"><span class="route-year">2026</span><h3>Harput</h3><p>Kalenin eteğinde amiral mağaza, online satış ve WhatsApp sipariş.</p></li>
+          <li class="route-step fade"><span class="route-year">2027</span><h3>Türkiye</h3><p>İstanbul, Ankara ve İzmir'de Çedene Barları; kafelere hazır macun tedariki.</p></li>
+          <li class="route-step fade"><span class="route-year">2028</span><h3>Gurbet</h3><p>Berlin, Köln, Amsterdam ve Londra: Elazığlıların ve Türk diasporasının şehirleri.</p></li>
+          <li class="route-step fade"><span class="route-year">2029+</span><h3>Dünya</h3><p>Üçüncü dalga kahve dükkânlarının menüsünde: "Harput terebinth coffee".</p></li>
+        </ol>
+        <p class="footnote fade">Yıllar iş planımızdaki hedeflerdir.</p>
+      </section>
+
+      <section id="pazar" class="section">
+        <p class="eyebrow fade">Nasıl büyüyoruz?</p>
+        <h2 class="split">Dağdan Şehre, Şehirden Dünyaya</h2>
+        <div class="gtm">
+          <div class="gtm-col fade">
+            <h3>Kime?</h3>
+            <ul>
+              <li><strong>Gurbetteki Elazığlılar:</strong> memleket özlemi, en anlamlı hediye.</li>
+              <li><strong>Kahve tutkunları:</strong> yeni lezzet arayan üçüncü dalga müdavimleri.</li>
+              <li><strong>Kahveyi azaltmak isteyenler:</strong> ritüelden vazgeçmeden yeni bir fincan.</li>
+            </ul>
+          </div>
+          <div class="gtm-col fade">
+            <h3>Nerede?</h3>
+            <ul>
+              <li><strong>Online ve WhatsApp:</strong> sitemizden doğrudan sipariş.</li>
+              <li><strong>Kafelere tedarik:</strong> "Menüne çedene ekle" paketi.</li>
+              <li><strong>Çedene Barı:</strong> önce Harput, sonra büyük şehirler.</li>
+            </ul>
+          </div>
+          <div class="gtm-col fade">
+            <h3>Nasıl?</h3>
+            <ul>
+              <li><strong>Kumda cezve videoları:</strong> sosyal medyanın en çok izlenen kahve sahnesi.</li>
+              <li><strong>Kürsübaşı pop-up'ları:</strong> şehir şehir tadım geceleri.</li>
+              <li><strong>"Elazığ'dan bir fincan":</strong> gurbetteki her eve bir set.</li>
+            </ul>
+          </div>
+        </div>
+        <dl class="revenue">
+          <div class="revenue-item fade"><dt>Başlangıç Seti</dt><dd>İlk deneme ve hediye</dd></div>
+          <div class="revenue-item fade"><dt>Aylık Abonelik</dt><dd>Tekrar eden gelir</dd></div>
+          <div class="revenue-item fade"><dt>Kafe Tedariki</dt><dd>Hızlı ölçeklenen kanal</dd></div>
+          <div class="revenue-item fade"><dt>Çedene Barı</dt><dd>Deneyim ve en yüksek marj</dd></div>
+        </dl>
         <table class="economics fade">
+          <caption>Birim ekonomi: bir fincan (barda)</caption>
           <tr><th>Fincan maliyeti</th><td>— ₺</td></tr>
           <tr><th>Satış fiyatı</th><td>— ₺</td></tr>
           <tr><th>Brüt marj</th><td>— %</td></tr>
         </table>
       </section>
 
-      <section id="eylem" class="section">
-        <h2 class="split">Ritüeli Evine, Şehrine Taşı</h2>
-        <div class="cta-grid">
-          <div class="cta fade">
-            <h3>Başlangıç Seti</h3>
-            <p>350 g taş dibek çedene + Harput fincanı.</p>
-            <a class="button" href="#">Sipariş Ver</a>
-          </div>
-          <div class="cta fade">
-            <h3>İlk Çedene Barını şehrine taşı</h3>
-            <p>Yatırımcı ve işletmeciler için ön talep formu.</p>
-            <a class="button button-ghost" href="#">Ön Talep Formu</a>
-          </div>
+      <section id="eylem" class="section section-alt section-cta">
+        <p class="eyebrow fade">Bir fincanla başla</p>
+        <h2 class="split">Dağın Kahvesi Bir Tık Uzakta</h2>
+        <p class="lead fade narrow">Başlangıç Seti ile evde ilk Kürsübaşı'nızı kurun; her siparişte Harput'taki toplayıcılar da kazansın.</p>
+        <div class="hero-actions fade">
+          <a class="button" href="/siparis.html">Sipariş Ver</a>
+          <a class="button button-ghost" href="#" target="_blank" rel="noopener" data-whatsapp="Merhaba HARPULSE ☕ Harput çedenesi ve ürünleriniz hakkında bilgi almak istiyorum.">WhatsApp'tan Yaz</a>
         </div>
       </section>
     </main>
+
+    <dialog class="treat-dialog" id="treat-dialog">
+      <button class="treat-close" type="button" data-treat-close aria-label="Kapat">×</button>
+      <svg class="two-cups two-cups-lg" viewBox="0 0 120 80" aria-hidden="true">
+        <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <g transform="rotate(-12 38 50)"><path d="M14 30h40l-5 32H19z"/><path d="M54 36c9 0 9 14 0 14"/><path d="M26 22c0-5 6-5 6-10M38 22c0-5 6-5 6-10"/></g>
+          <g transform="rotate(12 82 50)"><path d="M66 30h40l-5 32H71z"/><path d="M66 36c-9 0-9 14 0 14"/><path d="M78 22c0-5 6-5 6-10M90 22c0-5 6-5 6-10"/></g>
+        </g>
+      </svg>
+      <img class="treat-photo" src="/assets/ismarla.jpg" alt="" loading="lazy" onerror="this.remove()" />
+      <h2>Bir Fincan Ismarla</h2>
+      <p>Kırk yıl hatırı olan bir fincanı sevdiğine gönder ya da tanımadığın birine askıda bırak.</p>
+      <div class="treat-options">
+        <a class="treat-option" href="#" target="_blank" rel="noopener" data-treat-share>
+          <strong>Dostuna ısmarla</strong>
+          <span>WhatsApp'tan bir fincan çedene hediye et.</span>
+        </a>
+        <a class="treat-option" href="#" target="_blank" rel="noopener" data-whatsapp="Merhaba, askıya bir fincan çedene bırakmak istiyorum.">
+          <strong>Askıya bırak</strong>
+          <span>Harput'taki barımızda bir öğrenciye ya da ihtiyacı olana bir fincan bırak.</span>
+        </a>
+      </div>
+    </dialog>
+
+    <footer class="site-footer">
+      <div class="footer-brand">
+        <span class="brand" data-brand>ÇEDENE</span>
+        <p data-brand-tagline>Bir fincanın kırk yıl hatırı</p>
+        <p class="footer-social"><span data-brand-hashtag>#KırkYılHatır</span> · <span data-brand-handle>@harpulse</span></p>
+      </div>
+      <div class="footer-sources">
+        <h4>Kaynaklar ve görseller</h4>
+        <ul>
+          <li><a href="https://ci.turkpatent.gov.tr/Files/GeographicalSigns/1c5d177e-285f-4e42-bae0-5509130a0764.pdf" target="_blank" rel="noopener">Türk Patent: Elazığ Çedene Kahvesi tescil belgesi (no 1034)</a></li>
+          <li><a href="https://avesis.erciyes.edu.tr/yayin/fb51ec88-9bf5-4cc2-9c49-219ac3180f76/pistacia-terebinthus-menengic-meyve-ekstrelerinin-ve-menengic-kahvesinin-total-fenolik-ve-flavonoit-madde-kompozisyonlarinin-ve-antioksidan-etkilerininkarsilastirilmasi" target="_blank" rel="noopener">Erciyes Üniversitesi: menengiç ve menengiç kahvesinde fenolik bileşikler</a></li>
+          <li>Harput Kalesi fotoğrafı: <a href="https://commons.wikimedia.org/wiki/File:Harput_Kalesi_1035.jpg" target="_blank" rel="noopener">Dosseman, Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>, renk düzenlemesi yapılmıştır.</li>
+          <li>Bölüm görüntüleri yapay zekâ ile üretilmiştir.</li>
+        </ul>
+      </div>
+      <p class="footer-note">© 2026 Çedene · Hackathon projesi. Sayfadaki bilgiler tıbbi iddia taşımaz.</p>
+    </footer>
 
     <script type="module" src="/src/main.js"></script>
   </body>

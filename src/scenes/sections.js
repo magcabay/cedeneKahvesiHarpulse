@@ -1,9 +1,12 @@
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { MENU, PRODUCTS, formatTL } from '../config.js';
 
-// Sahne 4–6: pinned değil, normal akış. Her bölüm için tek giriş animasyonu (plan §4).
-// C: menü yatay kaydırma ve mobil düzen buraya eklenecek.
+// İçerik bölümleri: pinned değil, normal akış. Her bölüm için tek giriş animasyonu.
+// Ürün ve menü kartları config.js'ten üretilir: fiyatlar tek yerden değişir.
 export function initSections({ reducedMotion }) {
+  renderProducts();
+  renderMenu();
   document.querySelectorAll('.split').forEach(splitChars);
   if (reducedMotion) return;
 
@@ -19,6 +22,36 @@ export function initSections({ reducedMotion }) {
   });
 
   ScrollTrigger.refresh();
+}
+
+function renderProducts() {
+  const grid = document.getElementById('products-grid');
+  if (!grid) return;
+  grid.innerHTML = PRODUCTS.map((p) => `
+    <article class="product-card fade">
+      <a class="product-media" href="/siparis.html">
+        <img src="${p.image}" alt="${p.name}" loading="lazy"${p.focus ? ` style="${p.focus}"` : ''} />
+        ${p.tag ? `<span class="product-tag">${p.tag}</span>` : ''}
+      </a>
+      <div class="product-body">
+        <h3>${p.name}</h3>
+        <p>${p.detail}</p>
+        <div class="product-foot">
+          <span class="product-price">${formatTL(p.price)}${p.unit ? ` <small>${p.unit}</small>` : ''}</span>
+          <a class="product-buy" href="/siparis.html">Sepete ekle</a>
+        </div>
+      </div>
+    </article>`).join('');
+}
+
+function renderMenu() {
+  const list = document.getElementById('bar-menu');
+  if (!list) return;
+  list.innerHTML = MENU.map((m) => `
+    <li class="bar-item fade">
+      <div><h3>${m.name}</h3><p>${m.detail}</p></div>
+      <span class="bar-price">${formatTL(m.price)}</span>
+    </li>`).join('');
 }
 
 // SplitText yerine kendi span bölmemiz; kelimeler satır sonunda bölünmesin diye kelime sarmalı.

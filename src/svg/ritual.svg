@@ -17,6 +17,44 @@
       <stop offset="0%" stop-color="#3f7a5a"/>
       <stop offset="100%" stop-color="#2D5A43"/>
     </linearGradient>
+    <linearGradient id="g-sand" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#9a7650"/>
+      <stop offset="12%" stop-color="#7d5d3c"/>
+      <stop offset="60%" stop-color="#5a3f27"/>
+      <stop offset="100%" stop-color="#4a2d18"/>
+    </linearGradient>
+    <linearGradient id="g-sand-heat" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E07B39" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#E07B39" stop-opacity="0.45"/>
+    </linearGradient>
+    <linearGradient id="g-copper" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#d88a50"/>
+      <stop offset="35%" stop-color="#C87941"/>
+      <stop offset="100%" stop-color="#6b3a1a"/>
+    </linearGradient>
+    <radialGradient id="g-coal" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffb26b"/>
+      <stop offset="45%" stop-color="#E07B39"/>
+      <stop offset="100%" stop-color="#7a240a" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Kum tanesi dokusu: iki farklı ölçekte desen, tekrar hissini kırar -->
+    <pattern id="p-grain" width="23" height="19" patternUnits="userSpaceOnUse">
+      <circle cx="3" cy="4" r="0.9" fill="#c9a476" opacity="0.55"/>
+      <circle cx="11" cy="2" r="0.6" fill="#2e1d10" opacity="0.6"/>
+      <circle cx="18" cy="7" r="1.1" fill="#b38b5d" opacity="0.45"/>
+      <circle cx="7" cy="11" r="0.7" fill="#e0bf8f" opacity="0.5"/>
+      <circle cx="15" cy="14" r="0.8" fill="#2e1d10" opacity="0.5"/>
+      <circle cx="21" cy="17" r="0.6" fill="#c9a476" opacity="0.5"/>
+      <circle cx="2" cy="16" r="1" fill="#3b2614" opacity="0.45"/>
+      <circle cx="10" cy="18" r="0.5" fill="#e0bf8f" opacity="0.6"/>
+    </pattern>
+    <pattern id="p-grain-2" width="41" height="37" patternUnits="userSpaceOnUse">
+      <circle cx="6" cy="9" r="1.4" fill="#d8b384" opacity="0.35"/>
+      <circle cx="27" cy="5" r="1.2" fill="#24170c" opacity="0.4"/>
+      <circle cx="35" cy="24" r="1.6" fill="#c19563" opacity="0.3"/>
+      <circle cx="17" cy="30" r="1.1" fill="#24170c" opacity="0.4"/>
+      <circle cx="20" cy="17" r="0.8" fill="#f0d3a6" opacity="0.4"/>
+    </pattern>
     <filter id="f-blur" x="-50%" y="-50%" width="200%" height="200%">
       <feGaussianBlur stdDeviation="8"/>
     </filter>
@@ -37,8 +75,8 @@
 
       <!-- Sahne 1: Ağaç -->
       <g id="tree">
-        <path id="tree-trunk" fill="none" stroke="#3a2c22" stroke-width="18" stroke-linecap="round" d="M520 728 C514 680 530 630 524 560"/>
-        <g id="tree-branches" fill="none" stroke="#3a2c22" stroke-width="7" stroke-linecap="round">
+        <path id="tree-trunk" fill="none" stroke="#3a2c22" stroke-width="18" stroke-linecap="butt" d="M520 728 C514 680 530 630 524 560"/>
+        <g id="tree-branches" fill="none" stroke="#3a2c22" stroke-width="7" stroke-linecap="butt">
           <path class="branch" d="M524 610 C500 580 470 560 440 530"/>
           <path class="branch" d="M524 595 C560 570 590 540 625 515"/>
           <path class="branch" d="M524 565 C510 530 505 505 495 470"/>
@@ -87,10 +125,30 @@
 
     <!-- Sahne 2: Kum ve köz -->
     <g id="scene-sand">
-      <rect id="ember" x="210" y="2470" width="680" height="110" fill="url(#g-ember)"/>
-      <rect id="sand-tray" x="200" y="2340" width="700" height="140" fill="#C87941"/>
-      <rect id="sand" x="212" y="2350" width="676" height="122" fill="#3a2f24"/>
+      <!-- Kor: tavanın altındaki ateş yatağı; #ember grubu sürekli "nefes alır" -->
+      <g id="ember">
+        <rect x="190" y="2488" width="720" height="120" fill="url(#g-ember)"/>
+        <ellipse cx="300" cy="2512" rx="70" ry="16" fill="url(#g-coal)"/>
+        <ellipse cx="450" cy="2518" rx="90" ry="18" fill="url(#g-coal)"/>
+        <ellipse cx="620" cy="2510" rx="80" ry="15" fill="url(#g-coal)"/>
+        <ellipse cx="780" cy="2516" rx="75" ry="17" fill="url(#g-coal)"/>
+        <g fill="#ffb26b">
+          <circle cx="260" cy="2506" r="2"/><circle cx="350" cy="2520" r="1.5"/>
+          <circle cx="430" cy="2508" r="2.2"/><circle cx="505" cy="2524" r="1.4"/>
+          <circle cx="590" cy="2504" r="1.8"/><circle cx="665" cy="2522" r="2"/>
+          <circle cx="740" cy="2508" r="1.5"/><circle cx="830" cy="2520" r="2"/>
+        </g>
+      </g>
+      <!-- Bakır tava: dış gövde + üst kenar parıltısı -->
+      <path id="sand-tray" fill="url(#g-copper)" d="M196 2334 L904 2334 L896 2492 L204 2492 Z"/>
+      <rect x="192" y="2328" width="716" height="8" fill="#e09a62"/>
+      <rect x="192" y="2334" width="716" height="2" fill="#5a2f14"/>
+      <!-- Kum: arka yüzey (cezve bunun önünde durur) -->
+      <path id="sand" fill="url(#g-sand)" d="M210 2346 C260 2341 300 2349 360 2345 C430 2340 480 2350 550 2346 C620 2342 680 2350 740 2345 C800 2341 850 2348 890 2344 L890 2484 L210 2484 Z"/>
+      <path fill="url(#p-grain)" d="M210 2346 C260 2341 300 2349 360 2345 C430 2340 480 2350 550 2346 C620 2342 680 2350 740 2345 C800 2341 850 2348 890 2344 L890 2484 L210 2484 Z"/>
+      <path fill="url(#p-grain-2)" opacity="0.7" d="M210 2346 C260 2341 300 2349 360 2345 C430 2340 480 2350 550 2346 C620 2342 680 2350 740 2345 C800 2341 850 2348 890 2344 L890 2484 L210 2484 Z"/>
       <rect id="ledge" x="930" y="2470" width="470" height="40" fill="#1d1a17"/>
+      <rect x="930" y="2470" width="470" height="2" fill="#2a2622"/>
     </g>
 
     <g id="pot-move" transform="translate(170 2370)">
@@ -122,18 +180,27 @@
         <path id="pot-rim" fill="none" stroke="#E07B39" stroke-width="4" d="M-62 -170 L62 -170"/>
         <rect id="pot-handle" x="55" y="-148" width="180" height="14" fill="#8a5a34"/>
       </g>
-      <path id="sand-pile" fill="#3a2f24" d="M70 -18 C95 -40 130 -40 150 -18 L150 0 L70 0 Z"/>
+      <path id="sand-pile" fill="url(#g-sand)" d="M68 4 C78 -10 92 -26 108 -28 C124 -30 140 -16 158 4 Z"/>
+    </g>
+
+    <!-- Kum: ön yüzey; cezvenin tabanını örter, "kuma gömülü" hissi verir -->
+    <g id="scene-sand-front">
+      <path fill="url(#g-sand)" d="M210 2357 C280 2353 340 2360 420 2356 C500 2352 560 2361 640 2357 C720 2353 790 2361 890 2356 L890 2484 L210 2484 Z"/>
+      <path fill="url(#p-grain)" d="M210 2357 C280 2353 340 2360 420 2356 C500 2352 560 2361 640 2357 C720 2353 790 2361 890 2356 L890 2484 L210 2484 Z"/>
+      <path fill="url(#p-grain-2)" opacity="0.7" d="M210 2357 C280 2353 340 2360 420 2356 C500 2352 560 2361 640 2357 C720 2353 790 2361 890 2356 L890 2484 L210 2484 Z"/>
+      <!-- Isıdan alttan kızaran kum -->
+      <rect id="sand-heat" x="210" y="2420" width="680" height="64" fill="url(#g-sand-heat)"/>
     </g>
 
     <!-- Sahne 3: Döküm ve fincan -->
-    <path id="pour" fill="none" stroke="#3f7a5a" stroke-width="4" stroke-linecap="round" d="M1021 2180 C1024 2250 1018 2320 1021 2400"/>
+    <path id="pour" fill="none" stroke="#3f7a5a" stroke-width="4" stroke-linecap="butt" d="M1021 2180 C1024 2250 1018 2320 1021 2400"/>
     <g id="cup">
       <path id="cup-body" fill="#4a4540" d="M950 2380 L1090 2380 L1072 2475 L968 2475 Z"/>
       <g clip-path="url(#clip-cup)">
         <rect id="cup-fill" x="950" y="2470" width="140" height="100" fill="url(#g-liquid)"/>
       </g>
       <ellipse id="ripple" cx="1021" cy="2400" rx="24" ry="6" fill="none" stroke="#8fae8a" stroke-width="2" opacity="0"/>
-      <g id="steam" fill="none" stroke="#E8DCCB" stroke-width="10" stroke-linecap="round" filter="url(#f-blur)" opacity="0">
+      <g id="steam" fill="none" stroke="#E8DCCB" stroke-width="10" stroke-linecap="butt" filter="url(#f-blur)" opacity="0">
         <path class="steam" d="M995 2360 C985 2320 1005 2290 995 2250"/>
         <path class="steam" d="M1021 2360 C1011 2310 1031 2280 1021 2230"/>
         <path class="steam" d="M1047 2360 C1037 2320 1057 2290 1047 2250"/>

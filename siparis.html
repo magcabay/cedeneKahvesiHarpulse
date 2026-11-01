@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sipariş — Çedene</title>
+    <meta name="description" content="Taş dibek Elazığ Çedenesi ve Harput fincanı sipariş." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  </head>
+  <body class="order-page">
+    <header class="site-header site-header-static">
+      <a class="brand" href="/" data-brand>ÇEDENE</a>
+      <a class="back-link" href="/">← Hikâyeye dön</a>
+    </header>
+
+    <main class="order">
+      <p class="demo-note">Demo mağaza: ödeme alınmaz, sipariş WhatsApp üzerinden tamamlanır.</p>
+      <h1>Ritüeli eve getir</h1>
+      <p class="order-lead">Harput yamaçlarından toplanan yabani menengiç, taş dibekte dövülür ve kapına kadar gelir.</p>
+
+      <div class="order-grid">
+        <ul class="products" id="products"></ul>
+
+        <aside class="summary">
+          <h2>Sepet</h2>
+          <ul class="summary-lines" id="summary-lines"></ul>
+          <p class="summary-empty" id="summary-empty">Henüz bir şey seçmediniz.</p>
+          <div class="summary-total">
+            <span>Toplam</span>
+            <strong id="summary-total">0 ₺</strong>
+          </div>
+          <a class="button button-wide" id="order-whatsapp" href="#" target="_blank" rel="noopener" aria-disabled="true">WhatsApp ile siparişi tamamla</a>
+          <p class="summary-hint">Adres ve ödeme bilgisini WhatsApp sohbetinde alıyoruz; bilgileriniz bu sayfada saklanmaz.</p>
+        </aside>
+      </div>
+    </main>
+
+    <script type="module" src="/src/order.js"></script>
+  </body>
+</html>
