@@ -4891,14 +4891,13 @@ div.hero-visual {
   display: none;
 }
 
-/* Bardak görselinin kendi zemini kutu gibi görünmesin: kenarlar yumuşakça erir, sadece bardak kalır */
-.dc-img {
-  -webkit-mask-image: radial-gradient(ellipse 46% 50% at 50% 48%, #000 62%, transparent 100%);
-  mask-image: radial-gradient(ellipse 46% 50% at 50% 48%, #000 62%, transparent 100%);
+/* Bardak görselinin zemini (#f0e8db) önizleme kutusuyla aynı renk: büyüyüp küçülünce kutu görünmez, bardak net kalır */
+.designer-preview {
+  background: #f0e8db;
 }
 
-.designer-preview {
-  background: var(--bg-3);
+.dc-img {
+  mix-blend-mode: normal;
 }
 
 /* Görseller sürüklenmesin, seçilmesin */
