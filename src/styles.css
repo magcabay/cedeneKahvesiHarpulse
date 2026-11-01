@@ -4983,11 +4983,10 @@ video {
   position: absolute;
   right: 8%;
   bottom: 16%;
-  width: min(34%, 170px);
+  width: min(36%, 190px);
   visibility: hidden;
   opacity: 0;
   pointer-events: none;
-  filter: drop-shadow(0 8px 10px rgba(74, 51, 38, 0.18));
 }
 
 /* Maskot bir tık büyük */
