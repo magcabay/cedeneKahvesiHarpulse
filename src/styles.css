@@ -4514,3 +4514,41 @@ h3,
   object-position: 15% 55%;
   filter: sepia(0.7) saturate(0.85) brightness(0.95) contrast(1.25);
 }
+
+/* ---------- Açılış: yarısı Harput, yarısı döküm ---------- */
+
+/* Dalganın içi: döküm videosu. Maske kapta, video içeride aynalanır ki fincan dalganın ortasına gelsin */
+div.hero-visual {
+  overflow: hidden;
+  filter: none;
+}
+
+.hero-visual video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 55%;
+  transform: scaleX(-1);
+}
+
+/* Krem taraf: Harput Kalesi net görünür, yazının arkası okunaklı kalır */
+.hero-watermark img {
+  opacity: 0.62;
+  filter: sepia(0.45) saturate(0.85) contrast(1.08);
+}
+
+.hero-watermark::after {
+  background:
+    linear-gradient(90deg, rgba(246, 234, 217, 0.92) 0%, rgba(246, 234, 217, 0.72) 32%, rgba(246, 234, 217, 0.1) 60%, rgba(246, 234, 217, 0) 75%),
+    linear-gradient(180deg, rgba(246, 234, 217, 0.85) 0%, transparent 20%, transparent 82%, var(--bg) 100%);
+}
+
+[data-theme='dark'] .hero-watermark img {
+  opacity: 0.5;
+}
+
+[data-theme='dark'] .hero-watermark::after {
+  background:
+    linear-gradient(90deg, rgba(28, 24, 21, 0.92) 0%, rgba(28, 24, 21, 0.7) 32%, rgba(28, 24, 21, 0.1) 60%, rgba(28, 24, 21, 0) 75%),
+    linear-gradient(180deg, rgba(28, 24, 21, 0.85) 0%, transparent 20%, transparent 82%, var(--bg) 100%);
+}

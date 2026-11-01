@@ -129,10 +129,7 @@
 
     <main>
       <!-- Açılış: krem zemin, sağda antrasit dalga içinde ürün -->
-      <section class="hero hero-has-video" id="top">
-        <img class="hero-castle" src="/assets/00-harput.jpg" alt="" aria-hidden="true" />
-        <video class="hero-video" src="/assets/acilis.mp4" poster="/assets/acilis-poster.jpg" autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
-        <div class="hero-video-shade" aria-hidden="true"></div>
+      <section class="hero" id="top">
         <div class="hero-watermark" aria-hidden="true"><img src="/assets/00-harput.jpg" alt="" /></div>
         <div class="hero-seal" aria-hidden="true">
           <svg viewBox="0 0 200 200">
@@ -157,7 +154,9 @@
             <path d="M800 0 L800 900 L120 900 C260 760 300 620 420 470 C540 320 700 260 760 120 C780 70 795 30 800 0 Z"/>
           </svg>
           <!-- Döküm videosu gelince buraya video gelecek (scroll ile akacak) -->
-          <img class="hero-visual" src="/assets/04-poster.jpg" alt="Bakır cezveden Harput Kalesi motifli taş fincana dökülen çedene" />
+          <div class="hero-visual" aria-hidden="true">
+            <video src="/assets/acilis.mp4" poster="/assets/acilis-poster.jpg" autoplay muted loop playsinline preload="auto"></video>
+          </div>
           <div class="hero-cards">
             <a class="hero-card" href="/siparis.html">
               <img src="/assets/02-poster.jpg" alt="Taş dibekte dövülen menengiç" />
