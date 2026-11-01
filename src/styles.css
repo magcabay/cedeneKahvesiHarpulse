@@ -1,0 +1,245 @@
+:root {
+  --bg: #050505;
+  --bg-2: #0f0f0f;
+  --bg-3: #161412;
+  --liquid: #2d5a43;
+  --liquid-bright: #3f7a5a;
+  --copper: #c87941;
+  --ember: #e07b39;
+  --text: #e8dccb;
+  --text-2: #8a8580;
+  --font-display: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  --font-body: 'Manrope', 'Inter Tight', system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+}
+
+html {
+  background: var(--bg);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.site-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 10;
+  padding: 20px 24px;
+  pointer-events: none;
+}
+
+.brand {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  letter-spacing: 0.3em;
+  color: var(--copper);
+}
+
+/* ---------- Sahne 0–3: pinned ritüel ---------- */
+
+.ritual {
+  position: relative;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.ritual-stage,
+.ritual-stage svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#world,
+#pot-move,
+#pot,
+#mountain-far,
+#mountain-mid,
+#mountain-near {
+  will-change: transform;
+}
+
+.caption {
+  position: absolute;
+  left: 6vw;
+  top: 16vh;
+  max-width: 34rem;
+  z-index: 2;
+}
+
+.caption h2 {
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  margin-bottom: 0.75rem;
+}
+
+.caption p {
+  font-size: clamp(1rem, 1.4vw, 1.2rem);
+  color: var(--text);
+}
+
+.info-cards {
+  position: absolute;
+  right: 6vw;
+  top: 18vh;
+  display: grid;
+  gap: 12px;
+  list-style: none;
+  z-index: 2;
+}
+
+.info-card {
+  padding: 14px 20px;
+  border-left: 2px solid var(--copper);
+  background: rgba(15, 15, 15, 0.8);
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+}
+
+/* ---------- Sahne 4–6 (C) ---------- */
+
+.section {
+  min-height: 100vh;
+  padding: 18vh 6vw;
+  background: var(--bg);
+}
+
+.section h2 {
+  font-size: clamp(2.4rem, 6vw, 5rem);
+  margin-bottom: 2rem;
+}
+
+.section > p {
+  max-width: 40rem;
+  font-size: clamp(1.05rem, 1.6vw, 1.35rem);
+}
+
+.split .word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.split .char {
+  display: inline-block;
+}
+
+.footnote {
+  margin-top: 2rem;
+  font-size: 0.8rem !important;
+  color: var(--text-2);
+}
+
+.menu {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2px;
+  margin-bottom: 3rem;
+}
+
+.menu-item,
+.cta {
+  padding: 32px;
+  background: var(--bg-3);
+}
+
+.menu-item h3,
+.cta h3 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.menu-item p,
+.cta p {
+  color: var(--text-2);
+}
+
+.economics {
+  border-collapse: collapse;
+  min-width: min(100%, 360px);
+}
+
+.economics th,
+.economics td {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--bg-3);
+  text-align: left;
+  font-weight: 400;
+}
+
+.economics td {
+  text-align: right;
+  color: var(--copper);
+}
+
+.cta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2px;
+}
+
+.button {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 14px 28px;
+  background: var(--copper);
+  color: var(--bg);
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.04em;
+}
+
+.button:hover {
+  background: var(--ember);
+}
+
+.button-ghost {
+  background: transparent;
+  color: var(--copper);
+  outline: 1px solid var(--copper);
+}
+
+.button-ghost:hover {
+  background: var(--copper);
+  color: var(--bg);
+}
+
+@media (max-width: 767px) {
+  .caption {
+    left: 16px;
+    right: 16px;
+    top: 10vh;
+  }
+
+  .info-cards {
+    right: 16px;
+    left: 16px;
+    top: auto;
+    bottom: 8vh;
+  }
+
+  .section {
+    padding: 14vh 16px;
+  }
+}
