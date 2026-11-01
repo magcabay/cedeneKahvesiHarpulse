@@ -136,8 +136,26 @@ function reveals() {
 function mascot(reducedMotion) {
   const btn = document.querySelector('[data-mascot]');
   if (!btn) return;
+  // Tıklayınca zıplar ve her seferinde başka bir çedene sırrı söyler
+  const bubble = btn.querySelector('.mascot-bubble');
+  const lines = [
+    'Kırk yıl hatırım var!',
+    'Ben kahve değilim, menengiçim!',
+    'Kafeinim yok, gece de içilirim.',
+    'Taş dibekte dövüldüm.',
+    'Harput\'tan selam!',
+    'Bir fincan ısmarlar mısın?',
+    'Sütle daha da yumuşarım.',
+  ];
+  let line = -1;
   btn.addEventListener('click', () => {
-    document.querySelector('.taste')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    line = (line + 1) % lines.length;
+    bubble.textContent = lines[line];
+    bubble.dataset.said = '1';
+    gsap.timeline()
+      .to(btn.querySelector('.mascot-svg'), { y: -34, rotate: -8, duration: 0.22, ease: 'power2.out' })
+      .to(btn.querySelector('.mascot-svg'), { y: 0, rotate: 0, duration: 0.5, ease: 'bounce.out' });
+    gsap.fromTo(bubble, { scale: 0.6, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.4, ease: 'back.out(2)', transformOrigin: '0% 100%' });
   });
   if (reducedMotion) {
     btn.classList.add('is-visible');
