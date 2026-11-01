@@ -56,7 +56,7 @@ export const PRODUCTS = [
 // Bar menüsü (yer tutucu fiyatlar)
 export const MENU = [
   { name: 'Geleneksel Çedene', detail: 'Sütle, bakır cezvede. Harput usulü.', price: 90 },
-  { name: 'Çedene Kortado', detail: 'Çift ölçek çedene, yulaf ya da keçi sütü. Yoğun ve kısa.', price: 120 },
+  { name: 'Fıstıklı Çedene', detail: 'Çedene, Antep fıstığı kreması ve süt; üstünde çekilmiş fıstık.', price: 125 },
   { name: 'Soğuk Harput', detail: 'Soğuk demlenmiş çedene, badem sütü, buz.', price: 130 },
   { name: 'Çedene Latte', detail: 'Bol köpüklü süt, tek ölçek çedene, bir tutam tarçın.', price: 115 },
   { name: 'Kürsübaşı Seremonisi', detail: 'Masada kumda pişen cezve, iki taş fincan, lokum.', price: 260 },

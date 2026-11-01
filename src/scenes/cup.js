@@ -14,10 +14,11 @@ const OPTIONS = {
     { id: 'badem', label: 'Badem', price: 15, color: '#d8b48a' },
     { id: 'keci', label: 'Keçi sütü', price: 20, color: '#c2925e' },
   ],
+  // Köpük bardağın görselini seçer: az = koyu, orta = sütlü, bol = köpüklü (fıstık seçilirse fıstıklı bardak)
   foam: [
-    { id: 'az', label: 'Az', height: 8 },
-    { id: 'orta', label: 'Orta', height: 18 },
-    { id: 'bol', label: 'Bol', height: 30 },
+    { id: 'az', label: 'Az', image: '/assets/bardak-1.jpg' },
+    { id: 'orta', label: 'Orta', image: '/assets/bardak-2.jpg' },
+    { id: 'bol', label: 'Bol', image: '/assets/bardak-3.jpg' },
   ],
   sweet: [
     { id: 'sade', label: 'Sade' },
@@ -27,6 +28,7 @@ const OPTIONS = {
   extra: [
     { id: 'tarcin', label: 'Tarçın', price: 5, multi: true },
     { id: 'kakule', label: 'Kakule', price: 5, multi: true },
+    { id: 'fistik', label: 'Antep fıstığı', price: 15, multi: true },
     { id: 'lokum', label: 'Yanında lokum', price: 20, multi: true },
   ],
 };
@@ -72,9 +74,17 @@ export function initCupDesigner() {
     const price = size.price + milk.price + extras.reduce((s, o) => s + o.price, 0);
 
     gsap.to(cup, { scale: size.scale, transformOrigin: '50% 90%', duration: 0.5, ease: 'back.out(1.6)' });
-    gsap.to(cup.querySelector('.dc-coffee'), { attr: { fill: milk.color }, duration: 0.4 });
-    gsap.to(cup.querySelector('.dc-foam'), { attr: { height: foam.height, y: 110 - foam.height / 3 }, duration: 0.5, ease: 'power2.out' });
-    gsap.to(cup.querySelector('.dc-cinnamon'), { opacity: state.extra.has('tarcin') ? 1 : 0, duration: 0.3 });
+    const img = cup.querySelector('.dc-img');
+    const nextSrc = state.extra.has('fistik') ? '/assets/bardak-4.jpg' : foam.image;
+    if (!img.src.endsWith(nextSrc)) {
+      gsap.to(img, {
+        opacity: 0, y: 8, duration: 0.18, ease: 'power1.in',
+        onComplete: () => {
+          img.src = nextSrc;
+          gsap.to(img, { opacity: 1, y: 0, duration: 0.35, ease: 'power2.out' });
+        },
+      });
+    }
     cup.querySelector('.dc-name').textContent = name;
 
     form.querySelector('[data-cup-price]').textContent = formatTL(price);

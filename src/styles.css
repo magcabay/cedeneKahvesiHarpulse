@@ -4787,3 +4787,35 @@ div.hero-visual {
   height: clamp(130px, 22vh, 220px);
   filter: drop-shadow(0 0 8px rgba(240, 200, 156, 0.3));
 }
+
+/* Tasarım önizlemesi: kilim desenli bardak görselleri */
+.designer-cup {
+  position: relative;
+  width: min(100%, 320px);
+}
+
+.dc-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  mix-blend-mode: multiply;
+}
+
+.designer-cup .dc-name {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 54%;
+  text-align: center;
+  font-family: 'Fraunces', Georgia, serif;
+  font-style: italic;
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  color: #fbf1e2;
+  text-shadow: 0 2px 6px rgba(40, 14, 8, 0.75);
+  pointer-events: none;
+}
+
+[data-theme='dark'] .dc-img {
+  mix-blend-mode: normal;
+  border-radius: 18px;
+}
