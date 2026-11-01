@@ -3,7 +3,7 @@ import { BRAND } from '../config.js';
 
 // Açılış: Elazığ'dan dünya şehirlerine rotalar çizilir, marka belirir, perde kalkar.
 // Her açılışta gösterilir (Geç ile atlanabilir); dönen değer açılış sahnesinin ne kadar bekleyeceğidir (saniye).
-export function initSplash({ reducedMotion }) {
+export function initSplash({ reducedMotion, lenis }) {
   const splash = document.getElementById('splash');
   if (!splash) return 0;
 
@@ -13,6 +13,16 @@ export function initSplash({ reducedMotion }) {
   logo.innerHTML = [...BRAND].map((c) => `<span>${c}</span>`).join('');
 
   document.documentElement.classList.add('is-splashing');
+
+  // İntro bitene kadar sayfa kaymaz: tekerlek, dokunma ve klavye kaydırması engellenir
+  lenis?.stop();
+  const block = (e) => e.preventDefault();
+  const blockKeys = (e) => {
+    if (['ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', 'Home', 'End', ' '].includes(e.key)) e.preventDefault();
+  };
+  window.addEventListener('wheel', block, { passive: false });
+  window.addEventListener('touchmove', block, { passive: false });
+  window.addEventListener('keydown', blockKeys);
   const routes = splash.querySelectorAll('.splash-routes path');
   routes.forEach((p) => {
     const len = p.getTotalLength();
@@ -33,6 +43,12 @@ export function initSplash({ reducedMotion }) {
 
   function finish() {
     document.documentElement.classList.remove('is-splashing');
+    window.removeEventListener('wheel', block);
+    window.removeEventListener('touchmove', block);
+    window.removeEventListener('keydown', blockKeys);
+    window.scrollTo(0, 0);
+    lenis?.scrollTo(0, { immediate: true });
+    lenis?.start();
     gsap.killTweensOf('.splash-pulse');
     splash.remove();
   }

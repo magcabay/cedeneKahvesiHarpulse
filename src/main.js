@@ -7,6 +7,7 @@ import './styles.css';
 import { initHome } from './scenes/home.js';
 import { initSplash } from './scenes/splash.js';
 import { initI18n } from './i18n.js';
+import { initCupDesigner } from './scenes/cup.js';
 import { initSections } from './scenes/sections.js';
 import { BRAND, BRAND_HANDLE, BRAND_HASHTAG, BRAND_TAGLINE, STORE, whatsappLink } from './config.js';
 
@@ -55,8 +56,9 @@ if (treatDialog) {
   });
 }
 
+let lenis = null;
 if (!reducedMotion) {
-  const lenis = new Lenis();
+  lenis = new Lenis();
   lenis.scrollTo(0, { immediate: true });
   window.addEventListener('load', () => {
     window.scrollTo(0, 0);
@@ -67,9 +69,10 @@ if (!reducedMotion) {
   gsap.ticker.lagSmoothing(0);
 }
 
-const splashDelay = initSplash({ reducedMotion });
+const splashDelay = initSplash({ reducedMotion, lenis });
 initHome({ reducedMotion, delay: splashDelay });
 initSections({ reducedMotion });
+initCupDesigner();
 initI18n();
 
 // Koyu/açık mod: düğmenin olduğu yerden daire şeklinde yayılan geçiş (View Transitions destekleyen tarayıcılarda)

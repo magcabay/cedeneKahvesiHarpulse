@@ -29,6 +29,12 @@ function heroIntro(delay) {
   gsap.to('.seal-text', { rotate: 360, svgOrigin: '100 100', duration: 24, ease: 'none', repeat: -1 });
   gsap.to('.hero-seal', { y: -10, duration: 3.5, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: 2.5 });
 
+  // Harput silüeti soldan sağa bakır çizgiyle çizilir
+  document.querySelectorAll('.hero-skyline path').forEach((p, i) => {
+    const len = p.getTotalLength();
+    gsap.fromTo(p, { strokeDasharray: len, strokeDashoffset: len }, { strokeDashoffset: 0, duration: i ? 1.2 : 2.6, ease: 'power2.inOut', delay: delay + 0.4 });
+  });
+
   // Fincan havada hafifçe salınır
 
   // Parallax: scroll ile katmanlar farklı hızda

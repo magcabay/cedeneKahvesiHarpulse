@@ -52,7 +52,7 @@ function render() {
   total.textContent = formatTL(sum);
 
   const message = [
-    `Merhaba ${BRAND} ☕`,
+    `Merhaba ${BRAND}`,
     'Web sitenizden sipariş vermek istiyorum:',
     '',
     ...chosen.map((p) => `• ${cart.get(p.id)} × ${p.name} — ${formatTL(p.price * cart.get(p.id))}`),
@@ -65,7 +65,7 @@ function render() {
     'Telefon: ',
     'Not (isteğe bağlı): ',
     '',
-    'Teşekkürler, bir fincanın kırk yıl hatırı var! 🤎',
+    'Teşekkürler, bir fincanın kırk yıl hatırı var!',
   ].join('\n');
   cta.href = chosen.length ? whatsappLink(message) : '#';
   cta.setAttribute('aria-disabled', String(!chosen.length));

@@ -263,11 +263,11 @@ const HEADINGS = {
 
 // WhatsApp hazır mesajları
 const WHATSAPP = {
-  'Merhaba HARPULSE ☕ Harput çedenesi ve ürünleriniz hakkında bilgi almak istiyorum.': 'Hello HARPULSE ☕ I would like to learn more about Harput çedene and your products.',
-  'Merhaba HARPULSE ☕ Çedenenin tadına bakmak istiyorum. Ücretsiz tadım paketi alabilir miyim?': 'Hello HARPULSE ☕ I would like to taste çedene. Could I get a free tasting pack?',
+  'Merhaba HARPULSE Harput çedenesi ve ürünleriniz hakkında bilgi almak istiyorum.': 'Hello HARPULSE I would like to learn more about Harput çedene and your products.',
+  'Merhaba HARPULSE Çedenenin tadına bakmak istiyorum. Ücretsiz tadım paketi alabilir miyim?': 'Hello HARPULSE I would like to taste çedene. Could I get a free tasting pack?',
   'Merhaba, al-götür çedene siparişi vermek istiyorum.': 'Hello, I would like to order take-away çedene.',
   'Merhaba, şehrime bir Çedene Barı açmakla ilgileniyorum. Ön talep bırakmak istiyorum.': 'Hello, I am interested in opening a Çedene Bar in my city and would like to leave an enquiry.',
-  'Merhaba HARPULSE ☕ Franchise almak istiyorum. Şehrim: ': 'Hello HARPULSE ☕ I would like to open a franchise. My city: ',
+  'Merhaba HARPULSE Franchise almak istiyorum. Şehrim: ': 'Hello HARPULSE I would like to open a franchise. My city: ',
   "Merhaba, Harput'taki mağazanız hakkında bilgi almak istiyorum.": 'Hello, I would like to learn more about your store in Harput.',
   'Merhaba, askıya bir fincan çedene bırakmak istiyorum.': 'Hello, I would like to leave a cup of çedene on hold.',
 };
