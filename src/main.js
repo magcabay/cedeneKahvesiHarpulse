@@ -56,6 +56,12 @@ if (treatDialog) {
   });
 }
 
+// Görseller sürüklenip kaydırılamasın
+document.querySelectorAll('img').forEach((img) => img.setAttribute('draggable', 'false'));
+document.addEventListener('dragstart', (e) => {
+  if (e.target.closest?.('img, video')) e.preventDefault();
+});
+
 let lenis = null;
 if (!reducedMotion) {
   lenis = new Lenis();
@@ -67,6 +73,32 @@ if (!reducedMotion) {
   lenis.on('scroll', ScrollTrigger.update);
   gsap.ticker.add((time) => lenis.raf(time * 1000));
   gsap.ticker.lagSmoothing(0);
+}
+
+// İç bağlantılar (#menu gibi): Lenis'in yarım kalan kaydırması geri çekmesin diye kaydırmayı Lenis üzerinden yap
+const HEADER_OFFSET = -84;
+document.addEventListener('click', (e) => {
+  const link = e.target.closest('a[href^="#"]');
+  if (!link) return;
+  const hash = link.getAttribute('href');
+  if (hash === '#') return;
+  const target = hash === '#top' ? document.body : document.querySelector(hash);
+  if (!target) return;
+  e.preventDefault();
+  if (lenis) lenis.scrollTo(hash === '#top' ? 0 : target, { offset: HEADER_OFFSET, duration: 1.2 });
+  else window.scrollTo({ top: hash === '#top' ? 0 : target.getBoundingClientRect().top + window.scrollY + HEADER_OFFSET, behavior: 'smooth' });
+});
+
+// Yukarı çık oku: açılış geçilince belirir
+const toTop = document.querySelector('[data-to-top]');
+if (toTop) {
+  const sync = () => toTop.classList.toggle('is-visible', window.scrollY > window.innerHeight * 0.9);
+  window.addEventListener('scroll', sync, { passive: true });
+  sync();
+  toTop.addEventListener('click', () => {
+    if (lenis) lenis.scrollTo(0, { duration: 1.4 });
+    else window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
 }
 
 const splashDelay = initSplash({ reducedMotion, lenis });

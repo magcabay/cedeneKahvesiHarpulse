@@ -42,6 +42,7 @@ export function initSplash({ reducedMotion, lenis }) {
   gsap.to('.splash-pulse', { scale: 2.6, opacity: 0, svgOrigin: '470 236', duration: 1.2, repeat: -1, ease: 'power1.out' });
 
   function finish() {
+    clearTimeout(safety);
     document.documentElement.classList.remove('is-splashing');
     window.removeEventListener('wheel', block);
     window.removeEventListener('touchmove', block);
@@ -52,6 +53,9 @@ export function initSplash({ reducedMotion, lenis }) {
     gsap.killTweensOf('.splash-pulse');
     splash.remove();
   }
+
+  // Sekme arka plandayken animasyon duraklarsa intro asılı kalmasın: en geç 6 saniyede kapanır
+  const safety = setTimeout(() => tl.progress(1), 6000);
 
   splash.querySelector('[data-splash-skip]').addEventListener('click', () => {
     tl.progress(1);
