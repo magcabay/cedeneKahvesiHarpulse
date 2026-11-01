@@ -1,0 +1,143 @@
+<svg id="ritual-svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <!--
+    YER TUTUCU SAHNE (B ekibi gerçek çizimleri getirene kadar).
+    Dünya koordinatları: genişlik 1600; Sahne 0–1 y 0–900, dibek y 900–1800, kum ve fincan y 1800–2700.
+    Kamera #world grubunu translateY ile kaydırır. id'ler ritual.js ile sözleşmedir: değiştirmeyin, sadece içini yeniden çizin.
+  -->
+  <defs>
+    <radialGradient id="g-oil" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#3f7a5a" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#2D5A43" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="g-ember" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E07B39"/>
+      <stop offset="100%" stop-color="#5a1e08" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="g-liquid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3f7a5a"/>
+      <stop offset="100%" stop-color="#2D5A43"/>
+    </linearGradient>
+    <filter id="f-blur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8"/>
+    </filter>
+    <clipPath id="clip-pot">
+      <path d="M-75 0 L75 0 L48 -140 L62 -170 L-62 -170 L-48 -140 Z"/>
+    </clipPath>
+    <clipPath id="clip-cup">
+      <path d="M958 2385 L1082 2385 L1066 2470 L974 2470 Z"/>
+    </clipPath>
+  </defs>
+
+  <g id="world">
+    <!-- Sahne 0: Yamaç -->
+    <g id="scene-hills">
+      <path id="mountain-far" fill="#161412" d="M0 640 L180 520 L340 590 L520 470 L700 560 L880 450 L1080 560 L1260 480 L1440 570 L1600 500 L1600 900 L0 900 Z"/>
+      <path id="mountain-mid" fill="#1d1a17" d="M0 700 L220 610 L420 660 L600 600 L760 650 L900 560 L920 560 L920 530 L945 530 L945 545 L970 545 L970 520 L995 520 L995 560 L1010 560 L1180 640 L1400 590 L1600 660 L1600 900 L0 900 Z"/>
+      <path id="mountain-near" fill="#0f0f0f" d="M0 760 C200 700 380 690 560 720 C800 760 1100 820 1600 800 L1600 900 L0 900 Z"/>
+
+      <!-- Sahne 1: Ağaç -->
+      <g id="tree">
+        <path id="tree-trunk" fill="none" stroke="#3a2c22" stroke-width="18" stroke-linecap="round" d="M520 728 C514 680 530 630 524 560"/>
+        <g id="tree-branches" fill="none" stroke="#3a2c22" stroke-width="7" stroke-linecap="round">
+          <path class="branch" d="M524 610 C500 580 470 560 440 530"/>
+          <path class="branch" d="M524 595 C560 570 590 540 625 515"/>
+          <path class="branch" d="M524 565 C510 530 505 505 495 470"/>
+          <path class="branch" d="M524 565 C545 525 560 495 585 455"/>
+        </g>
+        <g id="tree-leaves" fill="#2D5A43">
+          <ellipse class="leaf" cx="440" cy="525" rx="26" ry="16"/>
+          <ellipse class="leaf" cx="465" cy="548" rx="20" ry="12"/>
+          <ellipse class="leaf" cx="625" cy="510" rx="26" ry="16"/>
+          <ellipse class="leaf" cx="598" cy="532" rx="20" ry="12"/>
+          <ellipse class="leaf" cx="495" cy="465" rx="24" ry="15"/>
+          <ellipse class="leaf" cx="510" cy="495" rx="18" ry="11"/>
+          <ellipse class="leaf" cx="585" cy="450" rx="26" ry="16"/>
+          <ellipse class="leaf" cx="565" cy="480" rx="18" ry="11"/>
+          <ellipse class="leaf" cx="540" cy="455" rx="22" ry="14"/>
+          <ellipse class="leaf" cx="470" cy="505" rx="18" ry="11"/>
+          <ellipse class="leaf" cx="610" cy="485" rx="18" ry="11"/>
+          <ellipse class="leaf" cx="420" cy="540" rx="16" ry="10"/>
+        </g>
+        <g id="seeds" fill="#4f8a86">
+          <circle class="seed" cx="448" cy="540" r="6"/>
+          <circle class="seed" cx="470" cy="530" r="5"/>
+          <circle class="seed" cx="618" cy="525" r="6"/>
+          <circle class="seed" cx="600" cy="515" r="5"/>
+          <circle class="seed" cx="500" cy="480" r="6"/>
+          <circle class="seed" cx="520" cy="470" r="5"/>
+          <circle class="seed" cx="578" cy="466" r="6"/>
+          <circle class="seed" cx="555" cy="470" r="5"/>
+          <circle class="seed" cx="535" cy="472" r="6"/>
+          <circle class="seed" cx="482" cy="515" r="5"/>
+        </g>
+      </g>
+    </g>
+
+    <!-- Sahne 1 devam: Dibek -->
+    <g id="scene-mortar">
+      <circle id="oil-glow" cx="800" cy="1440" r="170" fill="url(#g-oil)" opacity="0"/>
+      <path id="mortar-bowl" fill="#2a2622" d="M680 1440 L920 1440 L885 1590 L715 1590 Z"/>
+      <rect id="mortar-rim" x="670" y="1430" width="260" height="14" fill="#34302b"/>
+      <ellipse id="mortar-mash" cx="800" cy="1432" rx="110" ry="10" fill="#3f7a5a" opacity="0"/>
+      <g id="pestle">
+        <rect x="788" y="1230" width="24" height="210" fill="#4a3a2c"/>
+        <rect x="780" y="1405" width="40" height="38" fill="#5a4836"/>
+      </g>
+    </g>
+
+    <!-- Sahne 2: Kum ve köz -->
+    <g id="scene-sand">
+      <rect id="ember" x="210" y="2470" width="680" height="110" fill="url(#g-ember)"/>
+      <rect id="sand-tray" x="200" y="2340" width="700" height="140" fill="#C87941"/>
+      <rect id="sand" x="212" y="2350" width="676" height="122" fill="#3a2f24"/>
+      <rect id="ledge" x="930" y="2470" width="470" height="40" fill="#1d1a17"/>
+    </g>
+
+    <g id="pot-move" transform="translate(170 2370)">
+      <rect id="heat-wave" x="-70" y="-320" width="140" height="120" fill="#E8DCCB" opacity="0" filter="url(#f-blur)"/>
+      <g id="pot">
+        <path id="pot-body" fill="#C87941" d="M-75 0 L75 0 L48 -140 L62 -170 L-62 -170 L-48 -140 Z"/>
+        <g clip-path="url(#clip-pot)">
+          <rect id="pot-liquid" x="-80" y="0" width="160" height="200" fill="url(#g-liquid)"/>
+          <g id="foam" fill="#8fae8a">
+            <circle class="foam" cx="-40" cy="0" r="9"/>
+            <circle class="foam" cx="-20" cy="0" r="11"/>
+            <circle class="foam" cx="0" cy="0" r="10"/>
+            <circle class="foam" cx="20" cy="0" r="12"/>
+            <circle class="foam" cx="40" cy="0" r="9"/>
+            <circle class="foam" cx="-30" cy="-6" r="7"/>
+            <circle class="foam" cx="10" cy="-6" r="8"/>
+            <circle class="foam" cx="32" cy="-5" r="7"/>
+            <circle class="foam" cx="-8" cy="-8" r="6"/>
+            <circle class="foam" cx="-50" cy="-4" r="6"/>
+          </g>
+          <g id="bubbles" fill="#b8d2b0">
+            <circle class="bubble" cx="-30" cy="-20" r="3"/>
+            <circle class="bubble" cx="-5" cy="-25" r="2.5"/>
+            <circle class="bubble" cx="18" cy="-18" r="3"/>
+            <circle class="bubble" cx="35" cy="-28" r="2"/>
+            <circle class="bubble" cx="5" cy="-12" r="2"/>
+          </g>
+        </g>
+        <path id="pot-rim" fill="none" stroke="#E07B39" stroke-width="4" d="M-62 -170 L62 -170"/>
+        <rect id="pot-handle" x="55" y="-148" width="180" height="14" fill="#8a5a34"/>
+      </g>
+      <path id="sand-pile" fill="#3a2f24" d="M70 -18 C95 -40 130 -40 150 -18 L150 0 L70 0 Z"/>
+    </g>
+
+    <!-- Sahne 3: Döküm ve fincan -->
+    <path id="pour" fill="none" stroke="#3f7a5a" stroke-width="4" stroke-linecap="round" d="M1021 2180 C1024 2250 1018 2320 1021 2400"/>
+    <g id="cup">
+      <path id="cup-body" fill="#4a4540" d="M950 2380 L1090 2380 L1072 2475 L968 2475 Z"/>
+      <g clip-path="url(#clip-cup)">
+        <rect id="cup-fill" x="950" y="2470" width="140" height="100" fill="url(#g-liquid)"/>
+      </g>
+      <ellipse id="ripple" cx="1021" cy="2400" rx="24" ry="6" fill="none" stroke="#8fae8a" stroke-width="2" opacity="0"/>
+      <g id="steam" fill="none" stroke="#E8DCCB" stroke-width="10" stroke-linecap="round" filter="url(#f-blur)" opacity="0">
+        <path class="steam" d="M995 2360 C985 2320 1005 2290 995 2250"/>
+        <path class="steam" d="M1021 2360 C1011 2310 1031 2280 1021 2230"/>
+        <path class="steam" d="M1047 2360 C1037 2320 1057 2290 1047 2250"/>
+      </g>
+    </g>
+  </g>
+</svg>
