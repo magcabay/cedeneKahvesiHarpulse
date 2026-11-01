@@ -85,7 +85,10 @@ export function initCupDesigner() {
         },
       });
     }
-    cup.querySelector('.dc-name').textContent = name;
+    const nameEl = cup.querySelector('.dc-name');
+    nameEl.textContent = name;
+    // Uzun isimler bandın içinde kalsın diye küçülür
+    nameEl.style.setProperty('--name-size', `${Math.min(9, 62 / Math.max(name.length, 1))}cqw`);
 
     form.querySelector('[data-cup-price]').textContent = formatTL(price);
     const summary = [size.label, milk.label, `${foam.label} köpük`, pick('sweet').label, ...extras.map((o) => o.label)].join(' · ');

@@ -4891,9 +4891,9 @@ div.hero-visual {
   display: none;
 }
 
-/* Bardak görselinin zemini (#f0e8db) önizleme kutusuyla aynı renk: büyüyüp küçülünce kutu görünmez, bardak net kalır */
+/* Bardak görselinin zemini (#f4ecdf) önizleme kutusuyla aynı renk: büyüyüp küçülünce kutu görünmez, bardak net kalır */
 .designer-preview {
-  background: #f0e8db;
+  background: #f4ecdf;
 }
 
 .dc-img {
@@ -4908,11 +4908,22 @@ video {
   -webkit-user-select: none;
 }
 
-/* İsim etiketi bardağın gövdesine otursun (görselde bardak hafif solda) */
+/* İsim bardağın beyaz bandına yazılır: etiket yok, kahverengi el yazısı, bandın ortasında */
+.designer-cup {
+  container-type: inline-size;
+}
+
 .designer-cup .dc-name {
-  left: 42%;
-  top: 56%;
-  max-width: 62%;
+  left: 50%;
+  top: 54.6%;
+  transform: translate(-50%, -50%);
+  max-width: 38%;
+  padding: 0;
+  background: none;
+  box-shadow: none;
+  font-size: var(--name-size, 9cqw);
+  line-height: 1;
+  color: #5a2a1c;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -4954,4 +4965,11 @@ video {
 
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(180deg, #f0d6b0 0%, #d4a676 10%, #8a5e3e 24%, #6b4a3a 100%);
+}
+
+/* Manifesto: toplayıcı amca çizimi, kâğıt dokusu sayfaya otursun */
+.manifesto-photo img {
+  aspect-ratio: 1 / 1;
+  object-position: 50% 100%;
+  background: #f6efe2;
 }
