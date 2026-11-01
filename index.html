@@ -10,6 +10,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <script>
       try { if (localStorage.getItem('harpulse-theme') === 'dark') document.documentElement.dataset.theme = 'dark'; } catch (e) {}
+      // Her açılış en baştan: tarayıcı kaldığı yere ya da #bölüme atlamasın
+      if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+      if (location.hash) history.replaceState(null, '', location.pathname + location.search);
     </script>
   </head>
   <body>

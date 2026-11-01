@@ -12,6 +12,11 @@ import { BRAND, BRAND_HANDLE, BRAND_HASHTAG, BRAND_TAGLINE, STORE, whatsappLink 
 
 gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 
+// Sayfa her açılışta en baştan başlar: tarayıcının kaldığı yeri hatırlaması ve #bölüm adresleri intro'dan sonra ortaya atlatmasın
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+if (location.hash) history.replaceState(null, '', location.pathname + location.search);
+window.scrollTo(0, 0);
+
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 document.querySelectorAll('[data-brand]').forEach((el) => {
@@ -52,6 +57,11 @@ if (treatDialog) {
 
 if (!reducedMotion) {
   const lenis = new Lenis();
+  lenis.scrollTo(0, { immediate: true });
+  window.addEventListener('load', () => {
+    window.scrollTo(0, 0);
+    lenis.scrollTo(0, { immediate: true });
+  });
   lenis.on('scroll', ScrollTrigger.update);
   gsap.ticker.add((time) => lenis.raf(time * 1000));
   gsap.ticker.lagSmoothing(0);
