@@ -5,6 +5,8 @@ import Lenis from 'lenis';
 import 'lenis/dist/lenis.css';
 import './styles.css';
 import { initHome } from './scenes/home.js';
+import { initSplash } from './scenes/splash.js';
+import { initI18n } from './i18n.js';
 import { initSections } from './scenes/sections.js';
 import { BRAND, BRAND_HANDLE, BRAND_HASHTAG, BRAND_TAGLINE, STORE, whatsappLink } from './config.js';
 
@@ -55,5 +57,36 @@ if (!reducedMotion) {
   gsap.ticker.lagSmoothing(0);
 }
 
-initHome({ reducedMotion });
+const splashDelay = initSplash({ reducedMotion });
+initHome({ reducedMotion, delay: splashDelay });
 initSections({ reducedMotion });
+initI18n();
+
+// Koyu/açık mod: düğmenin olduğu yerden daire şeklinde yayılan geçiş (View Transitions destekleyen tarayıcılarda)
+const themeToggle = document.querySelector('[data-theme-toggle]');
+if (themeToggle) {
+  const root = document.documentElement;
+  const sync = () => {
+    const dark = root.dataset.theme === 'dark';
+    themeToggle.setAttribute('aria-label', dark ? 'Açık moda geç' : 'Koyu moda geç');
+  };
+  sync();
+  themeToggle.addEventListener('click', () => {
+    const apply = () => {
+      const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+      if (next === 'dark') root.dataset.theme = 'dark';
+      else delete root.dataset.theme;
+      try {
+        localStorage.setItem('harpulse-theme', next);
+      } catch {
+        // tercih hatırlanmaz, sorun değil
+      }
+      sync();
+    };
+    const r = themeToggle.getBoundingClientRect();
+    root.style.setProperty('--tx', `${r.left + r.width / 2}px`);
+    root.style.setProperty('--ty', `${r.top + r.height / 2}px`);
+    if (document.startViewTransition && !reducedMotion) document.startViewTransition(apply);
+    else apply();
+  });
+}

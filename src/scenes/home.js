@@ -2,21 +2,21 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 // Ana sayfa hareketleri: açılış girişi ve parallax, yatay hikâye şeridi, sayan rakamlar, görsel yakınlaşmaları.
-export function initHome({ reducedMotion }) {
+export function initHome({ reducedMotion, delay = 0 }) {
   mascot(reducedMotion);
   if (reducedMotion) return;
-  heroIntro();
+  heroIntro(delay);
   journey();
   countUp();
   reveals();
 }
 
-function heroIntro() {
+function heroIntro(delay) {
   const hero = document.querySelector('.hero');
   if (!hero) return;
 
   // Giriş: dalga süzülür, başlık kelime kelime yükselir, fincan dönerek gelir, kartlar kayar
-  gsap.timeline({ defaults: { ease: 'power3.out' } })
+  gsap.timeline({ defaults: { ease: 'power3.out' }, delay })
     .from('.hero-wave-shape, .hero-visual', { x: () => window.innerWidth * 0.3, opacity: 0, duration: 1.4, ease: 'power2.out' }, 0)
     .from('.hero .eyebrow', { y: 20, opacity: 0, duration: 0.8 }, 0.2)
     .from('.hero-title .w', { yPercent: 110, opacity: 0, rotate: 4, duration: 1, stagger: 0.12 }, 0.3)
@@ -79,6 +79,23 @@ function countUp() {
 }
 
 function reveals() {
+  // Neden çedene: fincan scroll ile döner gelir, maddeler iki yandan sırayla belirir
+  const why = document.querySelector('.why-orbit');
+  if (why) {
+    gsap.fromTo('.why-center img', { scale: 0.75, rotate: -25 }, {
+      scale: 1, rotate: 0, ease: 'none',
+      scrollTrigger: { trigger: why, start: 'top bottom', end: 'center center', scrub: true },
+    });
+    gsap.from('.why-left .why-item', {
+      x: -60, opacity: 0, duration: 0.8, stagger: 0.18, ease: 'power3.out',
+      scrollTrigger: { trigger: why, start: 'top 70%', once: true },
+    });
+    gsap.from('.why-right .why-item', {
+      x: 60, opacity: 0, duration: 0.8, stagger: 0.18, ease: 'power3.out', delay: 0.1,
+      scrollTrigger: { trigger: why, start: 'top 70%', once: true },
+    });
+  }
+
   // Tat çubukları kart görününce tek tek dolar
   const taste = document.querySelector('.taste');
   if (taste) {
