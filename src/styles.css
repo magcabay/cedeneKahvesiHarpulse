@@ -4782,3 +4782,8 @@ div.hero-visual {
 .hero-has-video .seal-text {
   fill: #f6ead9;
 }
+
+.hero-skyline {
+  height: clamp(130px, 22vh, 220px);
+  filter: drop-shadow(0 0 8px rgba(240, 200, 156, 0.3));
+}
